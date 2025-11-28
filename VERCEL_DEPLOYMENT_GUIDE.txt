@@ -1,0 +1,232 @@
+VERCEL DEPLOYMENT GUIDE - EMAIL FUNCTION SETUP
+==============================================
+
+Follow these steps to make your contact form work on Vercel:
+
+---
+
+STEP 1: GET RESEND API KEY
+---------------------------
+
+1. Go to https://resend.com
+2. Sign up for FREE account
+3. Verify your email
+4. Go to API Keys: https://resend.com/api-keys
+5. Click "Create API Key"
+6. Copy the key (starts with "re_")
+   Example: re_abcd1234efgh5678ijkl9012mnop3456
+
+---
+
+STEP 2: PUSH YOUR CODE TO GITHUB
+---------------------------------
+
+1. Initialize git (if not already):
+   git init
+   git add .
+   git commit -m "Initial commit - Portfolio with contact form"
+
+2. Create new repository on GitHub:
+   - Go to https://github.com/new
+   - Name it: "portfolio" or any name you want
+   - Don't initialize with README (already have files)
+   - Create repository
+
+3. Push your code:
+   git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
+   git branch -M main
+   git push -u origin main
+
+---
+
+STEP 3: DEPLOY TO VERCEL
+-------------------------
+
+1. Go to https://vercel.com
+2. Sign up / Log in (use GitHub account - easiest)
+3. Click "Add New" → "Project"
+4. Import your GitHub repository
+5. Vercel will auto-detect it's a Vite project
+6. Click "Deploy"
+
+Vercel will automatically:
+- Detect your serverless function in /api folder
+- Build your React app
+- Deploy everything
+
+---
+
+STEP 4: ADD RESEND API KEY TO VERCEL (CRITICAL!)
+-------------------------------------------------
+
+This is the MOST IMPORTANT step for email to work:
+
+1. In Vercel, go to your project
+2. Click "Settings" tab
+3. Click "Environment Variables" in sidebar
+4. Add new variable:
+   
+   Name:  RESEND_API_KEY
+   Value: re_your_actual_api_key_here  (paste the key from Step 1)
+   
+   Environment: Production (checked)
+   
+5. Click "Save"
+6. Go to "Deployments" tab
+7. Click "..." on latest deployment
+8. Click "Redeploy" (needed to apply env variable)
+
+---
+
+STEP 5: TEST YOUR CONTACT FORM
+-------------------------------
+
+1. Visit your live site: https://your-project.vercel.app
+2. Go to contact section
+3. Fill out the form:
+   - Name: Test User
+   - Email: test@example.com
+   - Message: This is a test message
+4. Click Submit
+5. Check your email: itamar.fullstack@gmail.com
+6. You should receive the email!
+
+---
+
+TROUBLESHOOTING
+---------------
+
+Problem: "Failed to send message" error
+Solution: 
+- Check Vercel logs: Project → Deployments → Click deployment → "Functions" tab
+- Verify RESEND_API_KEY is set correctly
+- Check if you redeployed after adding env variable
+
+Problem: Email not received
+Solution:
+- Check spam folder
+- Verify email in Resend dashboard: https://resend.com/emails
+- Make sure API key is valid
+
+Problem: Serverless function not found
+Solution:
+- Verify /api/contact.ts exists in your repo
+- Check vercel.json is in root
+- Redeploy the project
+
+---
+
+VERIFY DEPLOYMENT
+-----------------
+
+To check if everything is deployed correctly:
+
+1. Open browser DevTools (F12)
+2. Go to Network tab
+3. Submit contact form
+4. Look for request to "/api/contact"
+5. Check response:
+   - Success: { "success": true, "message": "Email sent successfully" }
+   - Error: Check error message in response
+
+---
+
+CUSTOM DOMAIN (OPTIONAL)
+-------------------------
+
+Want your own domain instead of .vercel.app?
+
+1. Buy domain (Namecheap, GoDaddy, etc.)
+2. In Vercel: Settings → Domains
+3. Add your domain
+4. Update DNS records (Vercel shows you exactly what to add)
+5. Wait for DNS propagation (usually 5-10 minutes)
+
+---
+
+RESEND EMAIL SETTINGS (OPTIONAL - FOR PRODUCTION)
+--------------------------------------------------
+
+For professional emails (not onboarding@resend.dev):
+
+1. In Resend dashboard: https://resend.com/domains
+2. Click "Add Domain"
+3. Enter your domain (e.g., yourdomain.com)
+4. Add DNS records Resend provides:
+   - SPF record
+   - DKIM records
+   - DMARC record (optional)
+5. Wait for verification (can take up to 24 hours)
+6. Once verified, update api/contact.ts:
+   
+   from: 'Portfolio <contact@yourdomain.com>'
+   
+7. Commit and push changes
+8. Vercel auto-deploys
+
+---
+
+QUICK CHECKLIST
+---------------
+
+Before deployment:
+☐ Code pushed to GitHub
+☐ Resend API key ready
+
+During deployment:
+☐ Project imported to Vercel
+☐ Initial deployment successful
+☐ RESEND_API_KEY added to Vercel
+☐ Project redeployed after adding env variable
+
+After deployment:
+☐ Contact form tested
+☐ Email received at itamar.fullstack@gmail.com
+☐ Success message shows in UI
+
+---
+
+IMPORTANT NOTES
+---------------
+
+✓ Vercel FREE tier includes:
+  - Unlimited projects
+  - Serverless functions
+  - Automatic HTTPS
+  - Git integration
+  - Perfect for portfolios!
+
+✓ Resend FREE tier includes:
+  - 100 emails/day
+  - 3,000 emails/month
+  - More than enough for portfolio!
+
+✓ Environment variables are:
+  - Secure (never exposed to client)
+  - Separate for development/production
+  - Can be updated anytime
+
+---
+
+SUPPORT
+-------
+
+If you have issues:
+
+Vercel Support:
+- Docs: https://vercel.com/docs
+- Discord: https://vercel.com/discord
+
+Resend Support:
+- Docs: https://resend.com/docs
+- Discord: https://resend.com/discord
+
+---
+
+YOU'RE DONE! 🎉
+
+Your portfolio is now live with a working contact form!
+
+Live site: https://your-project.vercel.app
+Emails go to: itamar.fullstack@gmail.com
+

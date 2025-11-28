@@ -1,0 +1,45 @@
+{
+  "hero": {
+    "title": "Itamar Fadida",
+    "subtitle": "Full-Stack Engineer & AI Systems Developer",
+    "description": "I'm a Full-Stack engineer specializing in building Web systems and the core of complex AI systems. My strengths include designing stable architecture, developing advanced user interfaces, building Serverless Backend processes, and creating AI software that integrates GPT, Gemini, and ElevenLabs into real end products. I approach every project with Precision Engineering: accurate specification → division into clear development units → building scalable infrastructure → Production-Ready launch. My value: I build systems that look good, work well, and make users feel like it's magic.",
+    "cta": {
+      "projects": "Projects",
+      "contact": "Contact",
+      "resume": "Resume"
+    }
+  },
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "resume": "Resume",
+    "contact": "Contact"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "description": "Interested in collaborating? I'd love to hear from you!",
+    "name": "Full Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "success": "Message sent successfully!",
+    "error": "Error sending message. Please try again."
+  },
+  "resume": {
+    "title": "Resume",
+    "download": "Download PDF",
+    "experience": "Professional Experience",
+    "education": "Education",
+    "skills": "Skills"
+  },
+  "projects": {
+    "title": "My Projects",
+    "viewProject": "View Project",
+    "sourceCode": "Source Code"
+  },
+  "footer": {
+    "rights": "All rights reserved"
+  }
+}
+
