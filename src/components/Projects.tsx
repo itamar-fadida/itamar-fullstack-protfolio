@@ -108,7 +108,7 @@ const Projects = () => {
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
               className="group"
             >
-              <div className="bg-gradient-to-br from-white to-dark-50 dark:from-dark-800 dark:to-dark-900 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all border border-dark-200 dark:border-dark-700 h-full flex flex-col">
+              <div className="bg-gradient-to-br from-white to-dark-50 dark:from-dark-800 dark:to-dark-900 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border border-dark-200 dark:border-dark-700 h-full flex flex-col">
                 {/* Image Carousel */}
                 <div className="relative h-80 overflow-hidden">
                   <AnimatePresence mode="wait">
@@ -233,7 +233,7 @@ const Projects = () => {
                         rel="noopener noreferrer"
                         whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.98 }}
-                        className="block w-full text-center px-6 py-3 gradient-brand text-white rounded-xl transition-all text-sm font-semibold shadow-lg hover:shadow-xl"
+                        className="block w-full text-center px-6 py-3 gradient-brand text-white rounded-xl transition-all duration-300 text-sm font-semibold shadow-xl hover:shadow-2xl hover:-translate-y-0.5"
                       >
                         {isHebrew ? 'בקר באתר' : 'Visit Site'}
                       </motion.a>

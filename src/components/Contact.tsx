@@ -152,7 +152,7 @@ const Contact = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
           onSubmit={handleSubmit}
-          className="bg-white dark:bg-dark-800 rounded-2xl shadow-xl p-8"
+          className="bg-white dark:bg-dark-800 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300 p-8"
         >
           <div className="space-y-6">
             {/* Name */}
@@ -225,12 +225,10 @@ const Contact = () => {
             </div>
 
             {/* Submit Button */}
-            <motion.button
-              whileHover={{ scale: status === 'sending' ? 1 : 1.02 }}
-              whileTap={{ scale: status === 'sending' ? 1 : 0.98 }}
+            <button
               type="submit"
               disabled={status === 'sending'}
-              className="w-full px-6 py-4 gradient-brand text-white rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="w-full px-6 py-4 gradient-brand text-white rounded-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 hover:-translate-y-0.5"
             >
               {status === 'sending' ? (
                 <>
@@ -243,7 +241,7 @@ const Contact = () => {
                   {t('contact.send')}
                 </>
               )}
-            </motion.button>
+            </button>
 
             {/* Status Messages */}
             {status === 'success' && (
@@ -278,20 +276,18 @@ const Contact = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-12 flex justify-center"
         >
-          <motion.button
+          <button
             onClick={() => {
               window.open(
                 `https://mail.google.com/mail/?view=cm&to=itamar.fullstack@gmail.com&su=${encodeURIComponent(isHebrew ? 'יצירת קשר' : 'Contact Request')}`,
                 "_blank"
               );
             }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-red-500 text-white px-8 py-4 rounded-full transition-all border-2 border-red-600 flex items-center gap-3 shadow-lg hover:shadow-xl"
+            className="bg-red-500 text-white px-8 py-4 rounded-full transition-all duration-300 border-2 border-red-600 flex items-center gap-3 shadow-xl hover:shadow-2xl hover:-translate-y-1"
           >
             <Mail className="w-6 h-6" />
             <span className="font-semibold">itamar.fullstack@gmail.com</span>
-          </motion.button>
+          </button>
         </motion.div>
       </div>
     </section>

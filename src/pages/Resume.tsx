@@ -256,17 +256,15 @@ const Resume = () => {
           <p className="text-lg text-dark-600 dark:text-dark-400 mb-6">
             itamar.fullstack@gmail.com
           </p>
-          <motion.button
+          <button
             onClick={handleDownloadPDF}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center space-x-2 rtl:space-x-reverse px-6 py-3 gradient-brand text-white rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all"
+            className="inline-flex items-center space-x-2 rtl:space-x-reverse px-6 py-3 gradient-brand text-white rounded-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
             <span>{t('resume.download')}</span>
-          </motion.button>
+          </button>
         </motion.div>
 
         {/* Experience */}
@@ -289,7 +287,7 @@ const Resume = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-                className="bg-white dark:bg-dark-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
+                className="bg-white dark:bg-dark-800 rounded-xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
               >
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
                   <h3 className="text-xl font-bold font-display text-dark-800 dark:text-white">
@@ -340,7 +338,7 @@ const Resume = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-                className="bg-white dark:bg-dark-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
+                className="bg-white dark:bg-dark-800 rounded-xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
               >
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
                   <h3 className="text-xl font-bold font-display text-dark-800 dark:text-white">
@@ -380,7 +378,7 @@ const Resume = () => {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.7 + index * 0.1 }}
-                className="bg-white dark:bg-dark-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
+                className="bg-white dark:bg-dark-800 rounded-xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
               >
                 <h3 className="text-xl font-bold font-display text-dark-800 dark:text-white mb-4">
                   {isHebrew ? category.nameHe : category.name}

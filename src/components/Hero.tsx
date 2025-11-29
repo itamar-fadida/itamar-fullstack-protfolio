@@ -152,7 +152,7 @@ const Hero = () => {
           <motion.div
             whileHover={{ scale: 1.15, rotate: 8 }}
             whileTap={{ scale: 0.95 }}
-            className="relative w-36 h-36"
+            className="relative w-36 h-36 cursor-pointer"
           >
             <motion.div 
               animate={{
@@ -214,86 +214,35 @@ const Hero = () => {
           {t('hero.description')}
         </motion.p>
 
-        {/* CTA Buttons */}
+        {/* CTA Buttons - All with gradient background */}
         <motion.div
           variants={itemVariants}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
-          <motion.a
+          <a
             href="#projects"
-            whileHover={{ 
-              scale: 1.05,
-              boxShadow: '0 20px 40px rgba(58, 166, 255, 0.4)',
-            }}
-            whileTap={{ scale: 0.95 }}
-            animate={{
-              y: [0, -3, 0],
-            }}
-            transition={{
-              y: { duration: 2.5, repeat: Infinity, ease: 'easeInOut' },
-            }}
-            className="inline-flex items-center gap-2 px-8 py-4 gradient-brand text-white rounded-xl font-semibold shadow-lg hover:shadow-2xl transition-all w-full sm:w-auto text-center justify-center group"
+            className="inline-flex items-center gap-2 px-8 py-4 gradient-brand text-white rounded-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 w-full sm:w-auto text-center justify-center hover:-translate-y-1"
           >
-            <motion.div
-              animate={{ rotate: [0, 10, -10, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              <FolderKanban className="w-5 h-5" />
-            </motion.div>
+            <FolderKanban className="w-5 h-5" />
             {t('hero.cta.projects')}
-          </motion.a>
+          </a>
 
-          <Link to="/resume">
-            <motion.button
-              whileHover={{ 
-                scale: 1.05,
-                borderColor: '#0C65FF',
-              }}
-              whileTap={{ scale: 0.95 }}
-              animate={{
-                y: [0, -3, 0],
-              }}
-              transition={{
-                y: { duration: 2.5, repeat: Infinity, ease: 'easeInOut', delay: 0.2 },
-              }}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white dark:bg-dark-800 text-dark-800 dark:text-white border-2 border-dark-300 dark:border-dark-600 rounded-xl font-semibold hover:border-brand-500 dark:hover:border-brand-400 transition-colors w-full sm:w-auto"
+          <Link to="/resume" className="w-full sm:w-auto">
+            <button
+              className="inline-flex items-center gap-2 px-8 py-4 gradient-brand text-white rounded-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 w-full hover:-translate-y-1"
             >
-              <motion.div
-                animate={{ rotate: [0, 5, -5, 0] }}
-                transition={{ duration: 2.5, repeat: Infinity }}
-              >
-                <FileText className="w-5 h-5" />
-              </motion.div>
+              <FileText className="w-5 h-5" />
               {t('hero.cta.resume')}
-            </motion.button>
+            </button>
           </Link>
 
-          <motion.a
+          <a
             href="#contact"
-            whileHover={{ 
-              scale: 1.05,
-              borderColor: '#0C65FF',
-            }}
-            whileTap={{ scale: 0.95 }}
-            animate={{
-              y: [0, -3, 0],
-            }}
-            transition={{
-              y: { duration: 2.5, repeat: Infinity, ease: 'easeInOut', delay: 0.4 },
-            }}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white dark:bg-dark-800 text-dark-800 dark:text-white border-2 border-dark-300 dark:border-dark-600 rounded-xl font-semibold hover:border-brand-500 dark:hover:border-brand-400 transition-colors w-full sm:w-auto text-center justify-center"
+            className="inline-flex items-center gap-2 px-8 py-4 gradient-brand text-white rounded-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 w-full sm:w-auto text-center justify-center hover:-translate-y-1"
           >
-            <motion.div
-              animate={{ 
-                rotate: [0, -10, 10, 0],
-                scale: [1, 1.1, 1],
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              <Mail className="w-5 h-5" />
-            </motion.div>
+            <Mail className="w-5 h-5" />
             {t('hero.cta.contact')}
-          </motion.a>
+          </a>
         </motion.div>
 
         {/* Scroll Indicator */}
@@ -312,12 +261,9 @@ const Hero = () => {
             }}
             className="inline-block cursor-pointer"
           >
-            <motion.div
-              whileHover={{ scale: 1.2 }}
-              className="p-2 rounded-full bg-brand-100 dark:bg-brand-900/30"
-            >
+            <div className="p-2 rounded-full bg-brand-100 dark:bg-brand-900/30 hover:scale-110 transition-transform">
               <ChevronDown className="w-6 h-6 text-brand-500 dark:text-brand-400" />
-            </motion.div>
+            </div>
           </motion.div>
         </motion.div>
       </motion.div>

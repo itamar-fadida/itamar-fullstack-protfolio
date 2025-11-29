@@ -19,15 +19,23 @@ const Navigation = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="fixed top-0 w-full bg-white/80 dark:bg-dark-900/80 backdrop-blur-md z-50 border-b border-dark-200 dark:border-dark-700">
+    <nav className="fixed top-0 w-full bg-white/80 dark:bg-dark-900/80 backdrop-blur-md z-50 border-b border-dark-200 dark:border-dark-700 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link to="/" className="text-xl font-bold font-display text-gradient-brand">
-            IF
+          {/* Logo with Icon - Always on start side */}
+          <Link to="/" className="flex items-center gap-2">
+            <div className="w-10 h-10 rounded-full gradient-brand p-0.5 shadow-lg">
+              <div className="w-full h-full rounded-full bg-white dark:bg-dark-800 flex items-center justify-center overflow-hidden">
+                <img 
+                  src="/favicon.png" 
+                  alt="Itamar Fadida" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation - Always on end side */}
           <div className={`hidden md:flex items-center space-x-8 ${isRTL ? 'space-x-reverse' : ''}`}>
             {navItems.map((item) => (
               <Link
