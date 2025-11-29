@@ -9,29 +9,6 @@ const Resume = () => {
 
   const experience = [
     {
-      id: 1,
-      title: 'Full-Stack Engineer & AI Systems Developer',
-      titleHe: 'מהנדס Full-Stack ומפתח מערכות AI',
-      company: 'Freelance / Contractor',
-      companyHe: 'עצמאי / קבלן',
-      period: '2023 – Present',
-      periodHe: '2023 – היום',
-      description: 'Building advanced production applications combining cloud infrastructure, AI models, automation logic, and scalable web systems.',
-      descriptionHe: 'בניית אפליקציות ייצור מתקדמות המשלבות תשתית ענן, מודלים של AI, לוגיקת אוטומציה ומערכות web סקיילביליות.',
-      achievements: [
-        'Designed and built full AI-based applications with real users and revenue',
-        'Developed highly modular architectures for web + backend + AI layers',
-        'Delivered production-ready CI/CD workflows and cloud pipelines',
-        'Supported clients end-to-end: UX, architecture, backend APIs, AI logic, deployment, and maintenance'
-      ],
-      achievementsHe: [
-        'תכננתי ובניתי אפליקציות מבוססות AI עם משתמשים אמיתיים והכנסות',
-        'פיתחתי ארכיטקטורות מודולריות ל-web + backend + שכבות AI',
-        'הקמתי תהליכי CI/CD ו-pipelines ענן מוכנים לייצור',
-        'תמכתי בלקוחות מקצה לקצה: UX, ארכיטקטורה, APIs backend, לוגיקת AI, השקה ותחזוקה'
-      ]
-    },
-    {
       id: 2,
       title: 'Omdim Lenatzach — AI Memorial Generation System',
       titleHe: 'עומדים לנצח — מערכת יצירת הנצחה AI',
@@ -59,20 +36,26 @@ const Resume = () => {
       ]
     },
     {
-      id: 3,
-      title: 'GovMind — AI Content System',
-      titleHe: 'GovMind — מערכת תוכן AI',
-      company: 'Full-Stack Developer (Prototype)',
-      companyHe: 'מפתח Full-Stack (פרוטוטייפ)',
-      period: '2024',
-      periodHe: '2024',
-      description: 'A Jasper-style AI content creation system with templates, project boards, rich editor, and AI-based writing tools.',
-      descriptionHe: 'מערכת יצירת תוכן AI בסגנון Jasper עם תבניות, לוחות פרויקטים, עורך עשיר וכלי כתיבה מבוססי AI.',
+      id: 1,
+      title: 'Full-Stack Engineer & AI Systems Developer',
+      titleHe: 'מהנדס Full-Stack ומפתח מערכות AI',
+      company: 'Freelance / Contractor',
+      companyHe: 'עצמאי / קבלן',
+      period: '2023 – Present',
+      periodHe: '2023 – היום',
+      description: 'Building advanced production applications combining cloud infrastructure, AI models, automation logic, and scalable web systems.',
+      descriptionHe: 'בניית אפליקציות ייצור מתקדמות המשלבות תשתית ענן, מודלים של AI, לוגיקת אוטומציה ומערכות web סקיילביליות.',
       achievements: [
-        'Status: Prototype mock, still under development'
+        'Designed and built full AI-based applications with real users and revenue',
+        'Developed highly modular architectures for web + backend + AI layers',
+        'Delivered production-ready CI/CD workflows and cloud pipelines',
+        'Supported clients end-to-end: UX, architecture, backend APIs, AI logic, deployment, and maintenance'
       ],
       achievementsHe: [
-        'סטטוס: אב טיפוס, עדיין בפיתוח'
+        'תכננתי ובניתי אפליקציות מבוססות AI עם משתמשים אמיתיים והכנסות',
+        'פיתחתי ארכיטקטורות מודולריות ל-web + backend + שכבות AI',
+        'הקמתי תהליכי CI/CD ו-pipelines ענן מוכנים לייצור',
+        'תמכתי בלקוחות מקצה לקצה: UX, ארכיטקטורה, APIs backend, לוגיקת AI, השקה ותחזוקה'
       ]
     }
   ];
@@ -130,7 +113,7 @@ const Resume = () => {
     'DevOps': {
       name: 'DevOps',
       nameHe: 'DevOps',
-      items: ['Docker', 'Kubernetes (K8s)', 'GitHub Actions CI/CD', 'GitLab CI/CD', 'Cloudflare Pages + R2', 'OpenShift', 'ArgoCD'],
+      items: ['Docker', 'Kubernetes (K8s)', 'GitHub Actions CI/CD', 'GitLab CI/CD', 'Cloudflare Pages + R2', 'OpenShift', 'ArgoCD', 'AWS CDK', 'Terraform'],
     },
     'AI': {
       name: 'AI Engineering',
