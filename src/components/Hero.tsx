@@ -196,7 +196,7 @@ const Hero = () => {
 
           <Link to="/resume" className="w-full sm:w-auto">
             <button
-              className="inline-flex items-center gap-2 px-8 py-4 gradient-brand text-white rounded-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 w-full hover:-translate-y-1"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 gradient-brand text-white rounded-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 w-full hover:-translate-y-1"
             >
               <FileText className="w-5 h-5" />
               {t('hero.cta.resume')}
