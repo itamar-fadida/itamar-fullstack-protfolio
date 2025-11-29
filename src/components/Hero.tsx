@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FolderKanban, Mail, FileText, ChevronDown, Code2, Sparkles } from 'lucide-react';
+import { FolderKanban, Mail, FileText, ChevronDown } from 'lucide-react';
 
 const Hero = () => {
   const { t } = useTranslation();
@@ -103,39 +103,6 @@ const Hero = () => {
         }}
         className="absolute bottom-1/3 left-1/4 w-36 h-36 bg-brand-200/20 dark:bg-brand-700/30 rounded-full blur-2xl"
       />
-
-      {/* Floating Icons */}
-      <motion.div
-        animate={{
-          y: [-10, 10, -10],
-          x: [-5, 5, -5],
-          rotate: [0, 5, -5, 0],
-        }}
-        transition={{
-          duration: 6,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-        className="absolute top-32 right-20 opacity-10 dark:opacity-20"
-      >
-        <Code2 className="w-16 h-16 text-brand-500" />
-      </motion.div>
-      <motion.div
-        animate={{
-          y: [10, -10, 10],
-          x: [5, -5, 5],
-          rotate: [0, -5, 5, 0],
-        }}
-        transition={{
-          duration: 7,
-          repeat: Infinity,
-          ease: 'easeInOut',
-          delay: 0.5,
-        }}
-        className="absolute bottom-32 left-20 opacity-10 dark:opacity-20"
-      >
-        <Sparkles className="w-14 h-14 text-brand-400" />
-      </motion.div>
 
       {/* Content */}
       <motion.div

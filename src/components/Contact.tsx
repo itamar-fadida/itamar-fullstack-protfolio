@@ -167,11 +167,11 @@ const Contact = () => {
                 value={formData.name}
                 onChange={handleChange}
                 disabled={status === 'sending'}
-                className={`w-full px-4 py-3 rounded-lg border ${
+                className={`w-full px-4 py-3 rounded-lg border-2 outline-none ${
                   errors.name 
-                    ? 'border-red-500 focus:ring-red-500' 
-                    : 'border-dark-300 dark:border-dark-600 focus:ring-brand-500 dark:focus:ring-brand-400'
-                } bg-white dark:bg-dark-900 text-dark-800 dark:text-white focus:ring-2 focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed`}
+                    ? 'border-red-500 focus:ring-red-500 focus:border-red-500' 
+                    : 'border-brand-400 dark:border-brand-500 focus:ring-brand-500 dark:focus:ring-brand-400 focus:border-brand-500 dark:focus:border-brand-400'
+                } bg-white dark:bg-dark-900 text-dark-800 dark:text-white focus:ring-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed`}
               />
               {errors.name && (
                 <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.name}</p>
@@ -190,11 +190,11 @@ const Contact = () => {
                 value={formData.email}
                 onChange={handleChange}
                 disabled={status === 'sending'}
-                className={`w-full px-4 py-3 rounded-lg border ${
+                className={`w-full px-4 py-3 rounded-lg border-2 outline-none ${
                   errors.email 
-                    ? 'border-red-500 focus:ring-red-500' 
-                    : 'border-dark-300 dark:border-dark-600 focus:ring-brand-500 dark:focus:ring-brand-400'
-                } bg-white dark:bg-dark-900 text-dark-800 dark:text-white focus:ring-2 focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed`}
+                    ? 'border-red-500 focus:ring-red-500 focus:border-red-500' 
+                    : 'border-brand-400 dark:border-brand-500 focus:ring-brand-500 dark:focus:ring-brand-400 focus:border-brand-500 dark:focus:border-brand-400'
+                } bg-white dark:bg-dark-900 text-dark-800 dark:text-white focus:ring-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed`}
               />
               {errors.email && (
                 <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.email}</p>
@@ -213,11 +213,11 @@ const Contact = () => {
                 onChange={handleChange}
                 disabled={status === 'sending'}
                 rows={5}
-                className={`w-full px-4 py-3 rounded-lg border ${
+                className={`w-full px-4 py-3 rounded-lg border-2 outline-none ${
                   errors.message 
-                    ? 'border-red-500 focus:ring-red-500' 
-                    : 'border-dark-300 dark:border-dark-600 focus:ring-brand-500 dark:focus:ring-brand-400'
-                } bg-white dark:bg-dark-900 text-dark-800 dark:text-white focus:ring-2 focus:border-transparent transition-all resize-none disabled:opacity-50 disabled:cursor-not-allowed`}
+                    ? 'border-red-500 focus:ring-red-500 focus:border-red-500' 
+                    : 'border-brand-400 dark:border-brand-500 focus:ring-brand-500 dark:focus:ring-brand-400 focus:border-brand-500 dark:focus:border-brand-400'
+                } bg-white dark:bg-dark-900 text-dark-800 dark:text-white focus:ring-2 transition-all resize-none disabled:opacity-50 disabled:cursor-not-allowed`}
               />
               {errors.message && (
                 <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.message}</p>
