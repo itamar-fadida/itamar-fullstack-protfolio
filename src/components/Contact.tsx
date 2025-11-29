@@ -170,7 +170,7 @@ const Contact = () => {
                 className={`w-full px-4 py-3 rounded-lg border-2 outline-none ${
                   errors.name 
                     ? 'border-red-500 focus:ring-red-500 focus:border-red-500' 
-                    : 'border-brand-400 dark:border-brand-500 focus:ring-brand-500 dark:focus:ring-brand-400 focus:border-brand-500 dark:focus:border-brand-400'
+                    : 'border-[#E0E0E0] dark:border-dark-600 focus:ring-[#B0B0B0] dark:focus:ring-dark-500 focus:border-[#B0B0B0] dark:focus:border-dark-500'
                 } bg-white dark:bg-dark-900 text-dark-800 dark:text-white focus:ring-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed`}
               />
               {errors.name && (
@@ -193,7 +193,7 @@ const Contact = () => {
                 className={`w-full px-4 py-3 rounded-lg border-2 outline-none ${
                   errors.email 
                     ? 'border-red-500 focus:ring-red-500 focus:border-red-500' 
-                    : 'border-brand-400 dark:border-brand-500 focus:ring-brand-500 dark:focus:ring-brand-400 focus:border-brand-500 dark:focus:border-brand-400'
+                    : 'border-[#E0E0E0] dark:border-dark-600 focus:ring-[#B0B0B0] dark:focus:ring-dark-500 focus:border-[#B0B0B0] dark:focus:border-dark-500'
                 } bg-white dark:bg-dark-900 text-dark-800 dark:text-white focus:ring-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed`}
               />
               {errors.email && (
@@ -216,7 +216,7 @@ const Contact = () => {
                 className={`w-full px-4 py-3 rounded-lg border-2 outline-none ${
                   errors.message 
                     ? 'border-red-500 focus:ring-red-500 focus:border-red-500' 
-                    : 'border-brand-400 dark:border-brand-500 focus:ring-brand-500 dark:focus:ring-brand-400 focus:border-brand-500 dark:focus:border-brand-400'
+                    : 'border-[#E0E0E0] dark:border-dark-600 focus:ring-[#B0B0B0] dark:focus:ring-dark-500 focus:border-[#B0B0B0] dark:focus:border-dark-500'
                 } bg-white dark:bg-dark-900 text-dark-800 dark:text-white focus:ring-2 transition-all resize-none disabled:opacity-50 disabled:cursor-not-allowed`}
               />
               {errors.message && (
