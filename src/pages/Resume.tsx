@@ -32,7 +32,7 @@ const Resume = () => {
         'יוצר פודקאסטים AI: קריינות אודיו מלאה באמצעות ElevenLabs',
         'Backend בזמן אמת: Firebase Functions + Python pipelines',
         'תשלומים: אינטגרציית PayPal לתהליכי רכישה בייצור',
-        'סטטוס: מוצר חי בייצור, בשימוש פעיל על ידי לקוחות משלמים'
+        'סטטוס: מוצר חי בייצור, בשימוש פעיל על ידי לקוחות'
       ]
     },
     {
@@ -241,7 +241,7 @@ const Resume = () => {
   };
 
   return (
-    <div className="min-h-screen py-20 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+    <div className="min-h-screen py-20 bg-gradient-to-br from-dark-50 to-dark-100 dark:from-dark-900 dark:to-dark-800">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -250,17 +250,17 @@ const Resume = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h1 className="text-4xl sm:text-5xl font-bold font-display text-dark-800 dark:text-white mb-4">
             {t('resume.title')}
           </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
+          <p className="text-lg text-dark-600 dark:text-dark-400 mb-6">
             itamar.fullstack@gmail.com
           </p>
           <motion.button
             onClick={handleDownloadPDF}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center space-x-2 rtl:space-x-reverse px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-semibold shadow-lg hover:shadow-xl transition-shadow"
+            className="inline-flex items-center space-x-2 rtl:space-x-reverse px-6 py-3 gradient-brand text-white rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -277,8 +277,8 @@ const Resume = () => {
           className="mb-12"
         >
           <div className="flex items-center gap-2 mb-6">
-            <Briefcase className="w-6 h-6 text-blue-600 dark:text-blue-400" />
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+            <Briefcase className="w-6 h-6 text-brand-500 dark:text-brand-400" />
+            <h2 className="text-3xl font-bold font-display text-dark-800 dark:text-white">
               {t('resume.experience')}
             </h2>
           </div>
@@ -289,27 +289,27 @@ const Resume = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-                className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow"
+                className="bg-white dark:bg-dark-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
               >
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                  <h3 className="text-xl font-bold font-display text-dark-800 dark:text-white">
                     {isHebrew ? job.titleHe : job.title}
                   </h3>
-                  <span className="text-sm text-gray-500 dark:text-gray-400 mt-1 sm:mt-0">
+                  <span className="text-sm text-dark-500 dark:text-dark-400 mt-1 sm:mt-0">
                     {isHebrew ? job.periodHe : job.period}
                   </span>
                 </div>
-                <p className="text-blue-600 dark:text-blue-400 font-medium mb-2">
+                <p className="text-brand-500 dark:text-brand-400 font-medium mb-2">
                   {isHebrew ? job.companyHe : job.company}
                 </p>
-                <p className="text-gray-600 dark:text-gray-300 mb-3">
+                <p className="text-dark-600 dark:text-dark-300 mb-3">
                   {isHebrew ? job.descriptionHe : job.description}
                 </p>
                 {job.achievements && (
                   <ul className="space-y-1 mt-3">
                     {(isHebrew ? job.achievementsHe : job.achievements)?.map((achievement, idx) => (
-                      <li key={idx} className="text-sm text-gray-600 dark:text-gray-400 flex items-start gap-2">
-                        <span className="text-blue-500 mt-1">•</span>
+                      <li key={idx} className="text-sm text-dark-600 dark:text-dark-400 flex items-start gap-2">
+                        <span className="text-brand-500 mt-1">•</span>
                         <span>{achievement}</span>
                       </li>
                     ))}
@@ -328,8 +328,8 @@ const Resume = () => {
           className="mb-12"
         >
           <div className="flex items-center gap-2 mb-6">
-            <GraduationCap className="w-6 h-6 text-blue-600 dark:text-blue-400" />
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+            <GraduationCap className="w-6 h-6 text-brand-500 dark:text-brand-400" />
+            <h2 className="text-3xl font-bold font-display text-dark-800 dark:text-white">
               {t('resume.education')}
             </h2>
           </div>
@@ -340,20 +340,20 @@ const Resume = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-                className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow"
+                className="bg-white dark:bg-dark-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
               >
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                  <h3 className="text-xl font-bold font-display text-dark-800 dark:text-white">
                     {isHebrew ? edu.degreeHe : edu.degree}
                   </h3>
-                  <span className="text-sm text-gray-500 dark:text-gray-400 mt-1 sm:mt-0">
+                  <span className="text-sm text-dark-500 dark:text-dark-400 mt-1 sm:mt-0">
                     {edu.period}
                   </span>
                 </div>
-                <p className="text-blue-600 dark:text-blue-400 font-medium mb-2">
+                <p className="text-brand-500 dark:text-brand-400 font-medium mb-2">
                   {isHebrew ? edu.institutionHe : edu.institution}
                 </p>
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className="text-dark-600 dark:text-dark-300">
                   <span className="font-semibold">{isHebrew ? 'התמחות' : 'Focus'}:</span> {isHebrew ? edu.focusHe : edu.focus}
                 </p>
               </motion.div>
@@ -368,8 +368,8 @@ const Resume = () => {
           transition={{ duration: 0.6, delay: 0.6 }}
         >
           <div className="flex items-center gap-2 mb-6">
-            <Code className="w-6 h-6 text-blue-600 dark:text-blue-400" />
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+            <Code className="w-6 h-6 text-brand-500 dark:text-brand-400" />
+            <h2 className="text-3xl font-bold font-display text-dark-800 dark:text-white">
               {t('resume.skills')}
             </h2>
           </div>
@@ -380,19 +380,20 @@ const Resume = () => {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.7 + index * 0.1 }}
-                className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow"
+                className="bg-white dark:bg-dark-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
               >
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+                <h3 className="text-xl font-bold font-display text-dark-800 dark:text-white mb-4">
                   {isHebrew ? category.nameHe : category.name}
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {category.items.map((skill) => (
-                    <span
+                    <motion.span
                       key={skill}
-                      className="px-3 py-1.5 text-sm font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-lg border border-blue-200 dark:border-blue-800"
+                      whileHover={{ scale: 1.05 }}
+                      className="px-3 py-1.5 text-sm font-medium bg-brand-50 dark:bg-brand-900/30 text-brand-600 dark:text-brand-300 rounded-lg border border-brand-200 dark:border-brand-800"
                     >
                       {skill}
-                    </span>
+                    </motion.span>
                   ))}
                 </div>
               </motion.div>

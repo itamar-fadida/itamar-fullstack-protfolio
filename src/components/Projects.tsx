@@ -32,7 +32,7 @@ const Projects = () => {
       title: 'Omdim Lenatzach',
       titleHe: 'עומדים לנצח',
       description: 'AI-Based Memorial Creation System — A commercial production product with real paying users.',
-      descriptionHe: 'מערכת הנצחה מבוססת AI — מוצר מסחרי פעיל עם משתמשים אמיתיים משלמים.',
+      descriptionHe: 'מערכת הנצחה מבוססת AI — מוצר מסחרי פעיל עם משתמשים אמיתיים.',
       images: ['/fes1.png', '/fes2.png', '/fes3.png', '/fes4.png', '/fes5.png', '/fes6.png'],
       technologies: ['React', 'Firebase', 'Google Cloud', 'Python', 'ElevenLabs', 'GPT-4', 'Gemini', 'PayPal'],
       liveUrl: 'https://omdimlanetzach.co.il/',
@@ -44,7 +44,7 @@ const Projects = () => {
         { icon: Cloud, text: 'Full Cloud Workflow: Upload → Process → Generate', textHe: 'תהליך מלא בענן: העלאה → עיבוד → יצירה' },
         { icon: Bot, text: 'AI-Powered Text Generation (GPT/Gemini)', textHe: 'טקסטים מבוססי GPT/Gemini' },
         { icon: CreditCard, text: 'PayPal Payment Integration', textHe: 'אינטגרציית תשלומים עם PayPal' },
-        { icon: Flame, text: 'Real production product with paying customers', textHe: 'מוצר אמיתי בייצור עם לקוחות משלמים' },
+        { icon: Flame, text: 'Real production product with paying customers', textHe: 'מוצר אמיתי בייצור עם לקוחות' },
       ],
     },
     {
@@ -83,7 +83,7 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-20 bg-white dark:bg-gray-900">
+    <section id="projects" className="py-20 bg-white dark:bg-dark-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -92,7 +92,7 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-4xl sm:text-5xl font-bold font-display text-dark-800 dark:text-white mb-4">
             {t('projects.title')}
           </h2>
         </motion.div>
@@ -101,60 +101,65 @@ const Projects = () => {
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ y: -5 }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
               className="group"
             >
-              <div className="bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all border border-gray-200 dark:border-gray-700 h-full flex flex-col">
-                {/* Image Carousel - BIGGER */}
+              <div className="bg-gradient-to-br from-white to-dark-50 dark:from-dark-800 dark:to-dark-900 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all border border-dark-200 dark:border-dark-700 h-full flex flex-col">
+                {/* Image Carousel */}
                 <div className="relative h-80 overflow-hidden">
                   <AnimatePresence mode="wait">
                     <motion.img
                       key={currentImageIndex[project.id] || 0}
                       src={project.images[currentImageIndex[project.id] || 0]}
                       alt={isHebrew ? project.titleHe : project.title}
-                      className="w-full h-full object-contain bg-gray-100 dark:bg-gray-950"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.3 }}
+                      className="w-full h-full object-contain bg-dark-100 dark:bg-dark-950"
+                      initial={{ opacity: 0, scale: 1.1 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.4 }}
                     />
                   </AnimatePresence>
                   
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
                   
                   {/* Carousel Controls */}
                   {project.images.length > 1 && (
                     <>
-                      <button
+                      <motion.button
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
                         onClick={() => prevImage(project.id, project.images.length)}
-                        className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all"
+                        className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-brand-500/80 text-white p-2 rounded-full transition-all"
                       >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                         </svg>
-                      </button>
-                      <button
+                      </motion.button>
+                      <motion.button
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
                         onClick={() => nextImage(project.id, project.images.length)}
-                        className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all"
+                        className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-brand-500/80 text-white p-2 rounded-full transition-all"
                       >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
-                      </button>
+                      </motion.button>
                       {/* Dots Indicator */}
                       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 bg-black/30 px-3 py-2 rounded-full">
                         {project.images.map((_, idx) => (
-                          <button
+                          <motion.button
                             key={idx}
+                            whileHover={{ scale: 1.2 }}
                             onClick={() => setCurrentImageIndex(prev => ({ ...prev, [project.id]: idx }))}
-                            className={`w-2 h-2 rounded-full transition-all ${
+                            className={`h-2 rounded-full transition-all ${
                               idx === (currentImageIndex[project.id] || 0)
-                                ? 'bg-white w-4'
-                                : 'bg-white/50'
+                                ? 'bg-brand-400 w-4'
+                                : 'bg-white/50 w-2'
                             }`}
                           />
                         ))}
@@ -163,8 +168,8 @@ const Projects = () => {
                   )}
 
                   {/* Title Overlay */}
-                  <div className="absolute bottom-4 left-4 right-4 rtl:left-4 rtl:right-4">
-                    <h3 className="text-2xl font-bold text-white mb-1">
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <h3 className="text-2xl font-bold font-display text-white mb-1">
                       {isHebrew ? project.titleHe : project.title}
                     </h3>
                   </div>
@@ -172,23 +177,30 @@ const Projects = () => {
 
                 {/* Content */}
                 <div className="p-6 flex-1 flex flex-col">
-                  <p className="text-gray-700 dark:text-gray-300 mb-4 text-base leading-relaxed">
+                  <p className="text-dark-600 dark:text-dark-300 mb-4 text-base leading-relaxed">
                     {isHebrew ? project.descriptionHe : project.description}
                   </p>
 
                   {/* Features */}
                   <div className="mb-6">
-                    <h4 className="text-sm font-bold text-gray-900 dark:text-white mb-3 uppercase tracking-wide">
+                    <h4 className="text-sm font-bold font-display text-dark-800 dark:text-white mb-3 uppercase tracking-wide">
                       {isHebrew ? 'תכונות עיקריות' : 'Key Features'}
                     </h4>
                     <ul className="space-y-2">
                       {project.features.slice(0, 4).map((feature, idx) => {
                         const Icon = feature.icon;
                         return (
-                          <li key={idx} className="text-sm text-gray-600 dark:text-gray-400 flex items-start gap-2">
-                            <Icon className="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                          <motion.li 
+                            key={idx} 
+                            initial={{ opacity: 0, x: -10 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: idx * 0.1 }}
+                            className="text-sm text-dark-600 dark:text-dark-400 flex items-start gap-2"
+                          >
+                            <Icon className="w-4 h-4 text-brand-500 mt-0.5 flex-shrink-0" />
                             <span>{isHebrew ? feature.textHe : feature.text}</span>
-                          </li>
+                          </motion.li>
                         );
                       })}
                     </ul>
@@ -196,17 +208,18 @@ const Projects = () => {
 
                   {/* Technologies */}
                   <div className="mb-6">
-                    <h4 className="text-sm font-bold text-gray-900 dark:text-white mb-3 uppercase tracking-wide">
+                    <h4 className="text-sm font-bold font-display text-dark-800 dark:text-white mb-3 uppercase tracking-wide">
                       {isHebrew ? 'טכנולוגיות' : 'Tech Stack'}
                     </h4>
                     <div className="flex flex-wrap gap-2">
                       {project.technologies.map((tech) => (
-                        <span
+                        <motion.span
                           key={tech}
-                          className="px-3 py-1 text-xs font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full border border-blue-200 dark:border-blue-800"
+                          whileHover={{ scale: 1.05 }}
+                          className="px-3 py-1 text-xs font-medium bg-brand-50 dark:bg-brand-900/30 text-brand-600 dark:text-brand-300 rounded-full border border-brand-200 dark:border-brand-800"
                         >
                           {tech}
-                        </span>
+                        </motion.span>
                       ))}
                     </div>
                   </div>
@@ -218,9 +231,9 @@ const Projects = () => {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        whileHover={{ scale: 1.02 }}
+                        whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.98 }}
-                        className="block w-full text-center px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl transition-all text-sm font-semibold shadow-lg hover:shadow-xl"
+                        className="block w-full text-center px-6 py-3 gradient-brand text-white rounded-xl transition-all text-sm font-semibold shadow-lg hover:shadow-xl"
                       >
                         {isHebrew ? 'בקר באתר' : 'Visit Site'}
                       </motion.a>
@@ -240,16 +253,16 @@ const Projects = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-12 text-center"
         >
-          <div className="max-w-2xl mx-auto bg-gradient-to-r from-gray-100 to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
+          <div className="max-w-2xl mx-auto bg-gradient-to-r from-dark-100 to-dark-50 dark:from-dark-800 dark:to-dark-900 rounded-xl p-6 border border-dark-200 dark:border-dark-700">
             <div className="flex items-center justify-center gap-2 mb-2">
-              <svg className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 text-dark-500 dark:text-dark-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
               </svg>
-              <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+              <p className="text-sm font-semibold text-dark-700 dark:text-dark-300">
                 {isHebrew ? 'פרויקטים נוספים' : 'Additional Projects'}
               </p>
             </div>
-            <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+            <p className="text-sm text-dark-600 dark:text-dark-400 leading-relaxed">
               {isHebrew 
                 ? 'קיימים פרויקטים פנימיים וסודיים נוספים שאינם זמינים לציבור. חלקם משמשים בסביבות ייצור פרטיות ולא ניתן לשתף אותם.'
                 : 'Additional internal and classified projects exist but are not publicly available. Some are used in private production environments and cannot be shared.'}

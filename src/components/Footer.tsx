@@ -8,7 +8,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-12 overflow-hidden">
+    <footer className="relative bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900 text-white py-12 overflow-hidden">
       {/* Animated Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0 bg-grid-pattern"></div>
@@ -25,7 +25,7 @@ const Footer = () => {
           repeat: Infinity,
           ease: 'linear',
         }}
-        className="absolute top-10 left-10 w-20 h-20 bg-blue-500/10 rounded-full blur-xl"
+        className="absolute top-10 left-10 w-20 h-20 bg-brand-500/10 rounded-full blur-xl"
       />
       <motion.div
         animate={{
@@ -37,7 +37,7 @@ const Footer = () => {
           repeat: Infinity,
           ease: 'linear',
         }}
-        className="absolute bottom-10 right-10 w-32 h-32 bg-purple-500/10 rounded-full blur-xl"
+        className="absolute bottom-10 right-10 w-32 h-32 bg-brand-400/10 rounded-full blur-xl"
       />
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -47,15 +47,15 @@ const Footer = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <h3 className="text-2xl font-bold font-display mb-4 bg-gradient-to-r from-brand-400 to-brand-500 bg-clip-text text-transparent">
             Itamar Fadida
           </h3>
-          <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-2xl mx-auto">
+          <p className="text-dark-400 text-sm leading-relaxed mb-6 max-w-2xl mx-auto">
             {isHebrew 
               ? 'מהנדס Full-Stack ומפתח מערכות AI. בונה מערכות שנראות טוב, עובדות טוב, וגורמות למשתמשים להרגיש שזה קסם.'
               : 'Full-Stack Engineer & AI Systems Developer. Building systems that look good, work well, and make users feel like it\'s magic.'}
           </p>
-          <p className="text-gray-500 text-sm">
+          <p className="text-dark-500 text-sm">
             {isHebrew 
               ? `© ${currentYear} איתמר פדידה. כל הזכויות שמורות.`
               : `© ${currentYear} Itamar Fadida. All rights reserved.`}

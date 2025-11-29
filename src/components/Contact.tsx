@@ -129,7 +129,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+    <section id="contact" className="py-20 bg-gradient-to-br from-dark-50 to-dark-100 dark:from-dark-900 dark:to-dark-800">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -138,10 +138,10 @@ const Contact = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-4xl sm:text-5xl font-bold font-display text-dark-800 dark:text-white mb-4">
             {t('contact.title')}
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400">
+          <p className="text-lg text-dark-600 dark:text-dark-400">
             {t('contact.description')}
           </p>
         </motion.div>
@@ -152,12 +152,12 @@ const Contact = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
           onSubmit={handleSubmit}
-          className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8"
+          className="bg-white dark:bg-dark-800 rounded-2xl shadow-xl p-8"
         >
           <div className="space-y-6">
             {/* Name */}
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label htmlFor="name" className="block text-sm font-medium text-dark-700 dark:text-dark-300 mb-2">
                 {t('contact.name')}
               </label>
               <input
@@ -170,8 +170,8 @@ const Contact = () => {
                 className={`w-full px-4 py-3 rounded-lg border ${
                   errors.name 
                     ? 'border-red-500 focus:ring-red-500' 
-                    : 'border-gray-300 dark:border-gray-600 focus:ring-blue-500 dark:focus:ring-blue-400'
-                } bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed`}
+                    : 'border-dark-300 dark:border-dark-600 focus:ring-brand-500 dark:focus:ring-brand-400'
+                } bg-white dark:bg-dark-900 text-dark-800 dark:text-white focus:ring-2 focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed`}
               />
               {errors.name && (
                 <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.name}</p>
@@ -180,7 +180,7 @@ const Contact = () => {
 
             {/* Email */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label htmlFor="email" className="block text-sm font-medium text-dark-700 dark:text-dark-300 mb-2">
                 {t('contact.email')}
               </label>
               <input
@@ -193,8 +193,8 @@ const Contact = () => {
                 className={`w-full px-4 py-3 rounded-lg border ${
                   errors.email 
                     ? 'border-red-500 focus:ring-red-500' 
-                    : 'border-gray-300 dark:border-gray-600 focus:ring-blue-500 dark:focus:ring-blue-400'
-                } bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed`}
+                    : 'border-dark-300 dark:border-dark-600 focus:ring-brand-500 dark:focus:ring-brand-400'
+                } bg-white dark:bg-dark-900 text-dark-800 dark:text-white focus:ring-2 focus:border-transparent transition-all disabled:opacity-50 disabled:cursor-not-allowed`}
               />
               {errors.email && (
                 <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.email}</p>
@@ -203,7 +203,7 @@ const Contact = () => {
 
             {/* Message */}
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label htmlFor="message" className="block text-sm font-medium text-dark-700 dark:text-dark-300 mb-2">
                 {t('contact.message')}
               </label>
               <textarea
@@ -216,8 +216,8 @@ const Contact = () => {
                 className={`w-full px-4 py-3 rounded-lg border ${
                   errors.message 
                     ? 'border-red-500 focus:ring-red-500' 
-                    : 'border-gray-300 dark:border-gray-600 focus:ring-blue-500 dark:focus:ring-blue-400'
-                } bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:border-transparent transition-all resize-none disabled:opacity-50 disabled:cursor-not-allowed`}
+                    : 'border-dark-300 dark:border-dark-600 focus:ring-brand-500 dark:focus:ring-brand-400'
+                } bg-white dark:bg-dark-900 text-dark-800 dark:text-white focus:ring-2 focus:border-transparent transition-all resize-none disabled:opacity-50 disabled:cursor-not-allowed`}
               />
               {errors.message && (
                 <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.message}</p>
@@ -230,7 +230,7 @@ const Contact = () => {
               whileTap={{ scale: status === 'sending' ? 1 : 0.98 }}
               type="submit"
               disabled={status === 'sending'}
-              className="w-full px-6 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="w-full px-6 py-4 gradient-brand text-white rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               {status === 'sending' ? (
                 <>
@@ -278,18 +278,20 @@ const Contact = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-12 flex justify-center"
         >
-          <button
+          <motion.button
             onClick={() => {
               window.open(
                 `https://mail.google.com/mail/?view=cm&to=itamar.fullstack@gmail.com&su=${encodeURIComponent(isHebrew ? 'יצירת קשר' : 'Contact Request')}`,
                 "_blank"
               );
             }}
-            className="bg-red-500 text-white px-8 py-4 rounded-full transition-transform duration-500 border-slate-300 border-2 hover:scale-110 flex items-center gap-3 shadow-lg"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-red-500 text-white px-8 py-4 rounded-full transition-all border-2 border-red-600 flex items-center gap-3 shadow-lg hover:shadow-xl"
           >
             <Mail className="w-6 h-6" />
             <span className="font-semibold">itamar.fullstack@gmail.com</span>
-          </button>
+          </motion.button>
         </motion.div>
       </div>
     </section>

@@ -13,7 +13,7 @@ const Layout = ({ children }: LayoutProps) => {
   const isRTL = i18n.language === 'he';
 
   return (
-    <div className={`min-h-screen bg-white dark:bg-gray-900 transition-colors ${isRTL ? 'rtl' : 'ltr'}`} dir={isRTL ? 'rtl' : 'ltr'}>
+    <div className={`min-h-screen bg-white dark:bg-dark-900 transition-colors ${isRTL ? 'rtl' : 'ltr'}`} dir={isRTL ? 'rtl' : 'ltr'}>
       <Navigation />
       <main className="pt-16">
         {children}
