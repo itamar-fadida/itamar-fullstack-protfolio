@@ -63,6 +63,11 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Form input focus — smooth ring animation */
+input, textarea, select {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
 /* Custom Scrollbar with brand colors */
 ::-webkit-scrollbar {
   width: 10px;

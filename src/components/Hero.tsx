@@ -181,57 +181,64 @@ const Hero = () => {
           {t('hero.description')}
         </motion.p>
 
-        {/* CTA Buttons - All with gradient background */}
+        {/* CTA Buttons — unified primary style */}
         <motion.div
           variants={itemVariants}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
           <a
             href="#projects"
-            className="inline-flex items-center gap-2 px-8 py-4 gradient-brand text-white rounded-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 w-full sm:w-auto text-center justify-center hover:-translate-y-1"
+            className="inline-flex items-center gap-2 px-8 py-4 gradient-brand text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto text-center justify-center hover:-translate-y-1 active:scale-[0.98]"
           >
             <FolderKanban className="w-5 h-5" />
             {t('hero.cta.projects')}
           </a>
 
-          <Link to="/resume" className="w-full sm:w-auto">
-            <button
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 gradient-brand text-white rounded-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 w-full hover:-translate-y-1"
-            >
-              <FileText className="w-5 h-5" />
-              {t('hero.cta.resume')}
-            </button>
+          <Link
+            to="/resume"
+            className="inline-flex items-center gap-2 px-8 py-4 gradient-brand text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto text-center justify-center hover:-translate-y-1 active:scale-[0.98]"
+          >
+            <FileText className="w-5 h-5" />
+            {t('hero.cta.resume')}
           </Link>
 
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 px-8 py-4 gradient-brand text-white rounded-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 w-full sm:w-auto text-center justify-center hover:-translate-y-1"
+            className="inline-flex items-center gap-2 px-8 py-4 gradient-brand text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto text-center justify-center hover:-translate-y-1 active:scale-[0.98]"
           >
             <Mail className="w-5 h-5" />
             {t('hero.cta.contact')}
           </a>
         </motion.div>
 
-        {/* Scroll Indicator */}
+        {/* Scroll Indicator — jumps to projects section */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2 }}
           className="mt-16"
         >
-          <motion.div
+          <motion.button
+            type="button"
+            aria-label="Scroll to projects"
+            onClick={() => {
+              document.getElementById('projects')?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center',
+              });
+            }}
             animate={{ y: [0, 15, 0] }}
-            transition={{ 
-              duration: 2, 
+            transition={{
+              duration: 2,
               repeat: Infinity,
               ease: 'easeInOut',
             }}
-            className="inline-block cursor-pointer"
+            className="inline-block cursor-pointer bg-transparent border-0 p-0"
           >
             <div className="p-2 rounded-full bg-brand-100 dark:bg-brand-900/30 hover:scale-110 transition-transform">
               <ChevronDown className="w-6 h-6 text-brand-500 dark:text-brand-400" />
             </div>
-          </motion.div>
+          </motion.button>
         </motion.div>
       </motion.div>
     </section>

@@ -167,11 +167,11 @@ const Contact = () => {
                 value={formData.name}
                 onChange={handleChange}
                 disabled={status === 'sending'}
-                className={`w-full px-4 py-3 rounded-lg border-2 outline-none ${
-                  errors.name 
-                    ? 'border-red-500 focus:ring-red-500 focus:border-red-500' 
-                    : 'border-[#E0E0E0] dark:border-dark-600 focus:ring-[#B0B0B0] dark:focus:ring-dark-500 focus:border-[#B0B0B0] dark:focus:border-dark-500'
-                } bg-white dark:bg-dark-900 text-dark-800 dark:text-white focus:ring-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed`}
+                className={`w-full px-4 py-3 rounded-lg border-2 outline-none transition-all duration-200 ${
+                  errors.name
+                    ? 'border-red-500 focus:ring-2 focus:ring-red-500/20 focus:border-red-500'
+                    : 'border-dark-200 dark:border-dark-600 focus:ring-2 focus:ring-brand-500/20 dark:focus:ring-brand-400/20 focus:border-brand-500 dark:focus:border-brand-400'
+                } bg-white dark:bg-dark-900 text-dark-800 dark:text-white disabled:opacity-50 disabled:cursor-not-allowed`}
               />
               {errors.name && (
                 <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.name}</p>
@@ -190,11 +190,11 @@ const Contact = () => {
                 value={formData.email}
                 onChange={handleChange}
                 disabled={status === 'sending'}
-                className={`w-full px-4 py-3 rounded-lg border-2 outline-none ${
-                  errors.email 
-                    ? 'border-red-500 focus:ring-red-500 focus:border-red-500' 
-                    : 'border-[#E0E0E0] dark:border-dark-600 focus:ring-[#B0B0B0] dark:focus:ring-dark-500 focus:border-[#B0B0B0] dark:focus:border-dark-500'
-                } bg-white dark:bg-dark-900 text-dark-800 dark:text-white focus:ring-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed`}
+                className={`w-full px-4 py-3 rounded-lg border-2 outline-none transition-all duration-200 ${
+                  errors.email
+                    ? 'border-red-500 focus:ring-2 focus:ring-red-500/20 focus:border-red-500'
+                    : 'border-dark-200 dark:border-dark-600 focus:ring-2 focus:ring-brand-500/20 dark:focus:ring-brand-400/20 focus:border-brand-500 dark:focus:border-brand-400'
+                } bg-white dark:bg-dark-900 text-dark-800 dark:text-white disabled:opacity-50 disabled:cursor-not-allowed`}
               />
               {errors.email && (
                 <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.email}</p>
@@ -213,11 +213,11 @@ const Contact = () => {
                 onChange={handleChange}
                 disabled={status === 'sending'}
                 rows={5}
-                className={`w-full px-4 py-3 rounded-lg border-2 outline-none ${
-                  errors.message 
-                    ? 'border-red-500 focus:ring-red-500 focus:border-red-500' 
-                    : 'border-[#E0E0E0] dark:border-dark-600 focus:ring-[#B0B0B0] dark:focus:ring-dark-500 focus:border-[#B0B0B0] dark:focus:border-dark-500'
-                } bg-white dark:bg-dark-900 text-dark-800 dark:text-white focus:ring-2 transition-all resize-none disabled:opacity-50 disabled:cursor-not-allowed`}
+                className={`w-full px-4 py-3 rounded-lg border-2 outline-none transition-all duration-200 resize-none ${
+                  errors.message
+                    ? 'border-red-500 focus:ring-2 focus:ring-red-500/20 focus:border-red-500'
+                    : 'border-dark-200 dark:border-dark-600 focus:ring-2 focus:ring-brand-500/20 dark:focus:ring-brand-400/20 focus:border-brand-500 dark:focus:border-brand-400'
+                } bg-white dark:bg-dark-900 text-dark-800 dark:text-white disabled:opacity-50 disabled:cursor-not-allowed`}
               />
               {errors.message && (
                 <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.message}</p>
@@ -228,7 +228,7 @@ const Contact = () => {
             <button
               type="submit"
               disabled={status === 'sending'}
-              className="w-full px-6 py-4 gradient-brand text-white rounded-xl font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 hover:-translate-y-0.5"
+              className="w-full px-6 py-4 gradient-brand text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 hover:-translate-y-0.5 active:scale-[0.98]"
             >
               {status === 'sending' ? (
                 <>
@@ -283,10 +283,10 @@ const Contact = () => {
                 "_blank"
               );
             }}
-            className="bg-red-500 text-white px-8 py-4 rounded-full transition-all duration-300 border-2 border-red-600 flex items-center gap-3 shadow-xl hover:shadow-2xl hover:-translate-y-1"
+            className="group bg-white dark:bg-dark-800 text-dark-700 dark:text-dark-300 px-8 py-4 rounded-full transition-all duration-300 border-2 border-dark-200 dark:border-dark-600 hover:border-red-400 dark:hover:border-red-400 hover:text-red-500 dark:hover:text-red-400 flex items-center gap-3 shadow-lg hover:shadow-xl hover:-translate-y-1 active:scale-[0.98]"
           >
-            <Mail className="w-6 h-6" />
-            <span className="font-semibold">itamar.fullstack@gmail.com</span>
+            <Mail className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
+            <span className="font-semibold text-sm">itamar.fullstack@gmail.com</span>
           </button>
         </motion.div>
       </div>

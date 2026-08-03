@@ -10,37 +10,35 @@ const Resume = () => {
   const experience = [
     {
       id: 2,
-      title: 'Omdim Lenatzach — AI Memorial Generation System',
-      titleHe: 'עומדים לנצח — מערכת יצירת הנצחה AI',
-      company: 'Lead Full-Stack & AI Engineer (Production)',
-      companyHe: 'מהנדס Full-Stack ו-AI ראשי (ייצור)',
+      title: 'Omdim Lenatzach — AI-Powered Memorial Platform',
+      titleHe: 'עומדים לנצח — מערכת הנצחה מבוססת AI',
+      company: 'CTO & Software Developer',
+      companyHe: 'CTO ומפתח התוכנה',
       period: '2024 – Present',
       periodHe: '2024 – היום',
-      description: 'A commercial, revenue-generating product that automates the creation of memorial materials for families and organizations.',
-      descriptionHe: 'מוצר מסחרי המייצר הכנסות, האוטומט יצירת חומרי הנצחה עבור משפחות וארגונים.',
+      description: 'Production system for a non-profit organization, with over 100 memorial boards created for fallen soldiers. Served as CTO, owning architecture, product delivery, and AI generation pipelines.',
+      descriptionHe: 'מערכת ב-production עבור ארגון ללא מטרות רווח, עם מעל 100 לוחות זיכרון והנצחות לחיילים. עבדתי כ-CTO — אחריות על הארכיטקטורה, הפיתוח והשקת המערכת.',
       achievements: [
-        'AI Poster Generation: Automated layouts based on uploaded images and text',
-        'AI Video Builder: Converts user content into cinematic memorial videos',
-        'AI Podcast Creator: Fully generated audio narration using ElevenLabs',
-        'Real-time backend: Firebase Functions + Python processing pipelines',
-        'Payments: PayPal integration for production purchase workflows',
-        'Status: Live product in production, used actively by paying customers'
+        'AI memorial boards: generation and live preview of boards before delivery to the requester',
+        'Memorial video creation (Remotion) from user input — images, clips, and background music selection',
+        'AI podcast narration: end-to-end voice generation pipeline with ElevenLabs',
+        'Event-driven backend: Firebase Functions with Python processing pipelines for generation workflows',
+        'Live in production: actively used by the organization for memorial creation'
       ],
       achievementsHe: [
-        'יצירת פוסטרים AI: פריסות אוטומטיות על בסיס תמונות וטקסט',
-        'בונה סרטוני AI: המרת תוכן משתמש לסרטוני הנצחה קולנועיים',
-        'יוצר פודקאסטים AI: קריינות אודיו מלאה באמצעות ElevenLabs',
-        'Backend בזמן אמת: Firebase Functions + Python pipelines',
-        'תשלומים: אינטגרציית PayPal לתהליכי רכישה בייצור',
-        'סטטוס: מוצר חי בייצור, בשימוש פעיל על ידי לקוחות'
+        'יצירת לוחות זיכרון ב-AI והדמיה חיה שלהם לפני שהם מגיעים למבקש ההנצחה',
+        'יצירת סרטוני הנצחה (Remotion) לפי קלט משתמש — תמונות, סרטונים ובחירת מוזיקת רקע',
+        'הפקת פודקאסטים: pipeline קריינות מקצה לקצה באמצעות ElevenLabs',
+        'Backend מונחה אירועים: Firebase Functions עם pipelines ב-Python לתהליכי יצירה',
+        'מערכת חיה ב-production, בשימוש פעיל של הארגון'
       ]
     },
     {
       id: 1,
-      title: 'Full-Stack Engineer & AI Systems Developer',
-      titleHe: 'מהנדס Full-Stack ומפתח מערכות AI',
-      company: 'Freelance / Contractor',
-      companyHe: 'עצמאי / קבלן',
+      title: 'Freelance',
+      titleHe: 'Freelance',
+      company: 'Independent Contractor',
+      companyHe: 'עצמאי',
       period: '2023 – Present',
       periodHe: '2023 – היום',
       description: 'Building advanced production applications combining cloud infrastructure, AI models, automation logic, and scalable web systems.',
@@ -57,6 +55,29 @@ const Resume = () => {
         'הקמתי תהליכי CI/CD ו-pipelines ענן מוכנים לייצור',
         'תמכתי בלקוחות מקצה לקצה: UX, ארכיטקטורה, APIs backend, לוגיקת AI, השקה ותחזוקה'
       ]
+    },
+    {
+      id: 3,
+      title: 'AppsFlyer — Special-Needs Children Monitoring App',
+      titleHe: 'AppsFlyer — מערכת לניטור ילדים עם צרכים מיוחדים',
+      company: 'Development Team Lead & Lead Backend Developer',
+      companyHe: 'ראש צוות פיתוח ומפתח Backend ראשי',
+      period: '2024 (2 months)',
+      periodHe: '2024 (חודשיים)',
+      description: 'Hands-on industry experience during Practical Engineering studies: led a volunteer production project for AppsFlyer — a React Native monitoring app backed by a TypeScript Lambda backend.',
+      descriptionHe: 'צבירת ניסיון במהלך לימודי ההנדסאי: עבודה בחברה על פרויקט התנדבותי ב-production — אפליקציית ניטור ב-React Native עם backend ב-TypeScript על AWS Lambda.',
+      achievements: [
+        'Led a team of 6 developers delivering a volunteer production project for AppsFlyer',
+        'Built the mobile client with React Native, Expo, and TypeScript',
+        'Owned the TypeScript Lambda backend — SMS delivery and Amazon Location Service for GPS tracking',
+        'Integrated Google Calendar sync for caregiver scheduling and alerts'
+      ],
+      achievementsHe: [
+        'הובלתי צוות של 6 מפתחים בפרויקט התנדבותי ב-production עבור AppsFlyer, כחלק מצבירת ניסיון בלימודי ההנדסאי',
+        'פיתחתי את האפליקציה ב-React Native עם Expo ו-TypeScript',
+        'בניתי את ה-backend ב-TypeScript על AWS Lambda — שליחת SMS ושימוש ב-Amazon Location Service לניטור מיקום',
+        'שילבתי סנכרון ל-Google Calendar לתזמון והתראות למטפלים'
+      ]
     }
   ];
 
@@ -64,38 +85,34 @@ const Resume = () => {
     id: 4,
     title: 'Software Engineer',
     titleHe: 'מהנדס תוכנה',
-    company: 'IDF — Intelligence & Technology Division',
-    companyHe: 'צה"ל — אגף המודיעין והטכנולוגיה',
+    company: 'IDF — Intelligence & Technology Division, Units 81 & 8200',
+    companyHe: 'צה"ל — אגף המודיעין והטכנולוגיה, יחידות 81 & 8200',
     period: '2024 - Present',
     periodHe: '2024 – היום',
-    description: 'Developed internal mission-critical systems, automation tools, and backend services within a secure intelligence environment.',
-    descriptionHe: 'פיתחתי מערכות פנימיות קריטיות, כלי אוטומציה ושירותי backend בסביבת מודיעין מאובטחת.',
+    description: 'Developed web systems and automations, along with data-processing pipelines on Argo Workflows.',
+    descriptionHe: 'פיתחתי מערכות web ואוטומציות, יחד עם pipelines לעיבוד מידע ב-Argo Workflows.',
     achievements: [
-      'Built full-stack systems using React, Redux, and modular component architectures',
-      'Implemented backend micro-services with Python, FastAPI, MongoDB, and secure internal APIs',
-      'Designed automation workflows and internal tooling pipelines using Argo Workflows, ArgoCD, and CI/CD',
-      'Contributed to containerized deployments with Docker and Kubernetes in operational clusters',
-      'Maintained high-availability systems supporting intelligence workflows'
+      'Built full-stack interfaces with React, Vite, Redux, and Zustand, organized into reusable modular components',
+      'Implemented backend microservices with Python, FastAPI, MongoDB, PostgreSQL, and secure APIs',
+      'Designed automation workflows and internal tooling pipelines using Argo Workflows, ArgoCD, OpenShift, and CI/CD'
     ],
     achievementsHe: [
-      'בניתי מערכות Full-Stack באמצעות React, Redux וארכיטקטורת רכיבים מודולרית',
-      'יישמתי micro-services backend עם Python, FastAPI, MongoDB וממשקי API מאובטחים',
-      'תכננתי תהליכי אוטומציה ו-pipelines פנימיים עם Argo Workflows, ArgoCD ו-CI/CD',
-      'תרמתי לפריסות containerized עם Docker ו-Kubernetes באשכולות תפעוליים',
-      'תחזקתי מערכות high-availability התומכות בתהליכי מודיעין'
+      'בניתי ממשקים ב-React ו-Vite עם Redux ו-Zustand לניהול state, ומבנה רכיבים מודולרי לשימוש חוזר',
+      'יישמתי micro-services ב-Python ו-FastAPI עם MongoDB ו-PostgreSQL, וממשקי API מאובטחים',
+      'תכננתי תהליכי אוטומציה ו-pipelines פנימיים עם Argo Workflows, ArgoCD, OpenShift ו-CI/CD'
     ]
   };
 
   const education = [
     {
       id: 1,
-      degree: 'Software Engineering Studies (Handesai Degree)',
+      degree: 'Practical Software Engineer',
       degreeHe: 'הנדסאי תוכנה',
       institution: 'ORT Singalovsky College',
       institutionHe: 'מכללת אורט סינגאלובסקי',
-      period: '2014 - 2024',
-      focus: 'Web Development, Cloud Systems, Databases, AI Software Engineering',
-      focusHe: 'פיתוח Web, מערכות ענן, מסדי נתונים, הנדסת תוכנת AI'
+      period: '2024',
+      focus: 'Full-Stack Development, Cloud Infrastructure, Database Design, and Applied AI Systems',
+      focusHe: 'פיתוח Full-Stack, תשתית ענן, עיצוב מסדי נתונים ומערכות AI יישומיות'
     }
   ];
 
@@ -103,7 +120,7 @@ const Resume = () => {
     'Frontend': {
       name: 'Frontend',
       nameHe: 'פיתוח חזית',
-      items: ['React', 'Next.js (App Router, SSR/ISR)', 'TypeScript', 'Tailwind CSS', 'ShadCN', 'Expo + React Native', 'UX: Dashboards, Forms, Workflows', 'Prompt Engineering', 'UI-LLM Interactions'],
+      items: ['React Vite', 'Next.js', 'TypeScript', 'Tailwind CSS', 'ShadCN', 'Redux', 'Zustand', 'React Native', 'Expo'],
     },
     'Backend': {
       name: 'Backend',
@@ -113,12 +130,12 @@ const Resume = () => {
     'DevOps': {
       name: 'DevOps',
       nameHe: 'DevOps',
-      items: ['Docker', 'Kubernetes (K8s)', 'GitHub Actions CI/CD', 'GitLab CI/CD', 'Cloudflare Pages + R2', 'OpenShift', 'ArgoCD', 'AWS CDK', 'Terraform'],
+      items: ['Docker', 'Kubernetes (K8s)', 'GitHub Actions CI/CD', 'GitLab CI/CD', 'Cloudflare (Workers, Pages, R2)', 'OpenShift', 'ArgoCD', 'Argo Workflows', 'AWS Step Functions + Lambda Pipelines', 'AWS CDK', 'Terraform'],
     },
     'AI': {
-      name: 'AI Engineering',
-      nameHe: 'הנדסת AI',
-      items: ['GPT OpenAI', 'Google Gemini', 'Embeddings + Vector Search', 'ElevenLabs Voice Generation', 'Python Pipelines', 'Data Enrichment & Classification'],
+      name: 'AI Automations & Integrations',
+      nameHe: 'אוטומציות עם אינטגרציה ל-AI',
+      items: ['TTS', 'Gemini API', 'Google Cloud Vision', 'Google Search', 'Playwright Automation Pipelines', 'AI Data Processing Pipelines'],
     },
   };
 
