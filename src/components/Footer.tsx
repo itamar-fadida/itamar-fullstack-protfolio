@@ -52,8 +52,8 @@ const Footer = () => {
           </h3>
           <p className="text-dark-400 text-sm leading-relaxed mb-6 max-w-2xl mx-auto">
             {isHebrew 
-              ? 'בוגר יחידות 81 ו-8200. מהנדס Full-Stack ומפתח מערכות AI — מוצרים ב-production מקצה לקצה, כולל תשתיות DevOps.'
-              : 'Alumni of IDF Units 81 & 8200. Full-Stack Engineer & AI Systems Developer — production products end-to-end, including DevOps.'}
+              ? 'בוגר יחידה 81. מהנדס Full-Stack ומפתח מערכות AI — מוצרים ב-production מקצה לקצה, כולל תשתיות DevOps.'
+              : 'Alumni of IDF Unit 81. Full-Stack Engineer & AI Systems Developer — production products end-to-end, including DevOps.'}
           </p>
           <p className="text-dark-500 text-sm">
             {isHebrew 
