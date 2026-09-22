@@ -466,36 +466,28 @@ export const work: WorkItem[] = [
     status: 'internal',
     summary: {
       en: 'A research platform built around a review loop rather than a single model call: a gatekeeper turns a vague brief into a hard spec, a writer and a critic argue over the solution until the critic agrees, and an architect compiles the result into an executable step graph. Every agent prompt is editable from the UI. Runs end to end locally against a self-hosted Gemma model; not deployed.',
-      he: 'פלטפורמת מחקר שבנויה סביב לולאת ביקורת: סוכן אחד כותב פתרון, סוכן שני מבקר אותו, והשניים חוזרים עד שהמבקר מאשר. הפתרון המאושר הופך לגרף שלבים שרץ אוטומטית. רצה מקומית מול מודל Gemma עצמאי; לא פרוסה.',
+      he: 'פלטפורמת מחקר סביב לולאת ביקורת: סוכן כותב פתרון, סוכן שני מבקר, והם חוזרים עד אישור. הפתרון המאושר הופך לגרף שלבים שרץ אוטומטית. רצה מקומית מול Gemma; לא פרוסה.',
     },
     engineering: [
       {
-        en: 'The quality mechanism is a loop, not a bigger model: the writer drafts a solution, the critic returns an explicit AGREE or DISAGREE with reasons, and the pair re-runs until the critic agrees or a per-mission round cap is reached — so a weak local model still converges on something reviewable.',
-        he: 'לולאה במקום מודל גדול: ה-writer כותב פתרון, ה-critic מחזיר AGREE או DISAGREE עם נימוקים, והם חוזרים עד אישור או עד תקרת סבבים. כך גם מודל מקומי קטן מגיע לתוצאה ראויה.',
+        en: 'The quality mechanism is a loop, not a bigger model: the writer drafts a solution, the critic returns an explicit AGREE or DISAGREE with reasons, and the pair re-runs until the critic agrees or a round cap is reached — so a small local model still converges on something reviewable.',
+        he: 'לולאה במקום מודל גדול: ה-writer כותב, ה-critic מאשר או דוחה עם נימוקים, וחוזר חלילה עד אישור או עד תקרת סבבים. כך גם מודל מקומי קטן מגיע לתוצאה ראויה.',
       },
       {
-        en: 'A gatekeeper agent interviews the user one question at a time until the spec has concrete inputs, outputs and constraints, and only then emits a machine-readable ready contract. Nothing downstream ever sees the original vague prompt.',
-        he: 'סוכן gatekeeper שואל שאלה אחת בכל פעם עד שברור מה הקלט, מה הפלט ומה האילוצים. רק מפרט מסודר ממשיך הלאה — לא הבקשה המקורית.',
+        en: 'A gatekeeper agent interviews the user one question at a time until the spec has concrete inputs, outputs and constraints, and recommends which reusable domain skills to attach — chosen from the skills actually registered in the database. It advises; the user decides; it never executes anything itself.',
+        he: 'סוכן gatekeeper שואל שאלה אחת בכל פעם עד שהמפרט ברור, וממליץ אילו skills לצרף מתוך אלו שקיימים במסד הנתונים. ההחלטה נשארת אצל המשתמש.',
       },
       {
-        en: 'The gatekeeper also recommends which reusable domain skills the mission should attach, chosen from the skills actually registered in the database rather than invented — and it stays advisory: it recommends, the user decides, and the gatekeeper never executes anything itself.',
-        he: 'ה-gatekeeper גם ממליץ אילו skills לצרף, מתוך אלו שקיימים בפועל במסד הנתונים. הוא רק ממליץ — המשתמש מחליט.',
+        en: 'Every agent prompt — gatekeeper, writer, critic, architect and the workers — is a database row edited from the UI and read fresh per request, with no fallback to a hard-coded default: changing agent behaviour needs no code change and no redeploy.',
+        he: 'כל ה-prompts של הסוכנים שמורים במסד הנתונים ונערכים מה-UI — שינוי התנהגות בלי שינוי קוד ובלי פריסה מחדש.',
       },
       {
-        en: 'Every agent prompt — gatekeeper, writer, critic, architect and the worker agents — is a database row edited from the UI and read fresh on each request, with no fallback to a hard-coded default: tuning agent behaviour needs no redeploy, and a missing prompt fails loudly instead of silently running a stale one.',
-        he: 'כל ה-prompts של הסוכנים שמורים במסד הנתונים ונערכים מה-UI. שינוי התנהגות של סוכן לא דורש שינוי קוד או פריסה מחדש.',
+        en: 'The approved solution is compiled into a step graph executed in dependency order (cycles and dangling references fail the run rather than passing silently); each step runs a bounded edit → pytest → repair loop in a real git workspace and commits only once its tests pass.',
+        he: 'הפתרון המאושר הופך לגרף שלבים שרץ לפי סדר התלויות; כל שלב רץ ב-workspace של git בלולאת כתיבה ← pytest ← תיקון, ומבצע commit רק כשהבדיקות עוברות.',
       },
       {
-        en: 'The architect compiles the agreed solution into a step graph, which the runner executes in topological order over the declared dependencies (Kahn, deterministic tie-breaking); cycles and dangling references fail the run instead of being silently linearised.',
-        he: 'הפתרון המאושר הופך לגרף שלבים שרץ לפי סדר התלויות. תלות מעגלית או הפניה לשלב שלא קיים מפילות את הריצה מיד, במקום לעבור בשקט.',
-      },
-      {
-        en: 'Each step runs a bounded edit → pytest → repair loop in a real git workspace and commits only once its tests pass; a step that exhausts its retries marks the steps depending on it as skipped rather than cascading the failure.',
-        he: 'כל שלב רץ ב-workspace אמיתי של git בלולאת כתיבה ← pytest ← תיקון, ומבצע commit רק כשהבדיקות עוברות. שלב שנכשל שוב ושוב מדלג על השלבים שתלויים בו במקום להפיל הכול.',
-      },
-      {
-        en: 'A run is claimed with one conditional update from queued to running, so repeated or concurrent launches are idempotent; all progress is written to the job document rather than streamed, so the user can close the tab mid-run and rebuild the entire UI from a single GET, with every writer and critic round kept as a versioned artefact in S3.',
-        he: 'הכול רץ ברקע והמצב נשמר במסד הנתונים, כך שאפשר לסגור את הדפדפן באמצע ולחזור בלי לאבד כלום. כל גרסת פתרון וביקורת נשמרת ב-S3.',
+        en: 'A run is claimed with one conditional update from queued to running, so repeated launches are idempotent, and all progress is written to the job document rather than streamed — the user can close the tab mid-run and rebuild the whole UI from a single GET, with every writer and critic round kept as a versioned artefact in S3.',
+        he: 'הכול רץ ברקע והמצב נשמר, כך שאפשר לסגור את הדפדפן באמצע ולחזור בלי לאבד כלום. כל גרסת פתרון וביקורת נשמרת ב-S3.',
       },
     ],
     flow: [
