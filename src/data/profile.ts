@@ -485,10 +485,6 @@ export const work: WorkItem[] = [
         en: 'The approved solution is compiled into a step graph executed in dependency order (cycles and dangling references fail the run rather than passing silently); each step runs a bounded edit → pytest → repair loop in a real git workspace and commits only once its tests pass.',
         he: 'הפתרון המאושר הופך לגרף שלבים שרץ לפי סדר התלויות; כל שלב רץ ב-workspace של git בלולאת כתיבה ← pytest ← תיקון, ומבצע commit רק כשהבדיקות עוברות.',
       },
-      {
-        en: 'A run is claimed with one conditional update from queued to running, so repeated launches are idempotent, and all progress is written to the job document rather than streamed — the user can close the tab mid-run and rebuild the whole UI from a single GET, with every writer and critic round kept as a versioned artefact in S3.',
-        he: 'הכול רץ ברקע והמצב נשמר, כך שאפשר לסגור את הדפדפן באמצע ולחזור בלי לאבד כלום. כל גרסת פתרון וביקורת נשמרת ב-S3.',
-      },
     ],
     flow: [
       'Brief',
