@@ -1,63 +1,90 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <link rel="canonical" href="https://itamarfadida.com/" />
+
+    <title>Itamar Fadida — Software Engineer, Backend &amp; Infrastructure</title>
     <meta
       name="description"
-      content="Itamar Fadida - Full-Stack Engineer & AI Systems Developer"
-    />
-    <meta
-      name="keywords"
-      content="Full-Stack, Engineer, AI, Developer, React, TypeScript"
+      content="Itamar Fadida — Software Engineer at IDF Unit 81. Backend services in Python and FastAPI, data-processing workflows on Kubernetes, cloud infrastructure and production web systems. Based in Tel Aviv."
     />
     <meta name="author" content="Itamar Fadida" />
-    <title>Itamar Fadida | Full-Stack Engineer & AI Systems Developer</title>
+    <meta
+      name="keywords"
+      content="Itamar Fadida, Software Engineer, Backend Engineer, Infrastructure Engineer, Kubernetes, Python, FastAPI, Unit 81, Tel Aviv"
+    />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0a0b0d" media="(prefers-color-scheme: dark)" />
 
-    <!-- Geist and Inter Fonts -->
+    <!-- Open Graph -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content="Itamar Fadida" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="he_IL" />
+    <meta property="og:url" content="https://itamarfadida.com/" />
+    <meta
+      property="og:title"
+      content="Itamar Fadida — Software Engineer, Backend &amp; Infrastructure"
+    />
+    <meta
+      property="og:description"
+      content="Software Engineer at IDF Unit 81. Backend services in Python and FastAPI, data-processing workflows on Kubernetes, cloud infrastructure and production web systems."
+    />
+    <!-- TODO(itamar): replace with a dedicated 1200x630 social card at /og.png. -->
+    <meta property="og:image" content="https://itamarfadida.com/favicon.png" />
+    <meta property="og:image:alt" content="Itamar Fadida — Software Engineer" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="Itamar Fadida — Software Engineer, Backend &amp; Infrastructure"
+    />
+    <meta
+      name="twitter:description"
+      content="Software Engineer at IDF Unit 81. Backend, data-processing workflows on Kubernetes, and production web systems."
+    />
+    <meta name="twitter:image" content="https://itamarfadida.com/favicon.png" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <link href="https://fonts.cdnfonts.com/css/geist" rel="stylesheet" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Itamar Fadida",
+        "jobTitle": "Software Engineer — Backend & Infrastructure",
+        "url": "https://itamarfadida.com/",
+        "email": "mailto:itamar.fullstack@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressRegion": "Tel Aviv District",
+          "addressCountry": "IL"
+        },
+        "knowsAbout": [
+          "Backend engineering",
+          "Python",
+          "FastAPI",
+          "TypeScript",
+          "Kubernetes",
+          "Argo Workflows",
+          "CI/CD",
+          "Cloud infrastructure"
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <script>
-      (function () {
-        if (!window.chatbase || window.chatbase("getState") !== "initialized") {
-          window.chatbase = (...arguments) => {
-            if (!window.chatbase.q) {
-              window.chatbase.q = [];
-            }
-            window.chatbase.q.push(arguments);
-          };
-          window.chatbase = new Proxy(window.chatbase, {
-            get(target, prop) {
-              if (prop === "q") {
-                return target.q;
-              }
-              return (...args) => target(prop, ...args);
-            },
-          });
-        }
-        const onLoad = function () {
-          const script = document.createElement("script");
-          script.src = "https://www.chatbase.co/embed.min.js";
-          script.id = "ielbBKKSFodybt29ik6oe";
-          script.domain = "www.chatbase.co";
-          document.body.appendChild(script);
-        };
-        if (document.readyState === "complete") {
-          onLoad();
-        } else {
-          window.addEventListener("load", onLoad);
-        }
-      })();
-    </script>
   </body>
 </html>

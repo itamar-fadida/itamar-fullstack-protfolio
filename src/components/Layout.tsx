@@ -1,28 +1,26 @@
 import { ReactNode } from 'react';
-import { useTranslation } from 'react-i18next';
 import Navigation from './Navigation';
 import Contact from './Contact';
 import Footer from './Footer';
 
-interface LayoutProps {
-  children: ReactNode;
-}
+const Layout = ({ children }: { children: ReactNode }) => (
+  <div className="min-h-screen bg-page">
+    <a
+      href="#main"
+      className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-ink focus:px-3 focus:py-2 focus:text-sm focus:text-page"
+    >
+      Skip to content
+    </a>
 
-const Layout = ({ children }: LayoutProps) => {
-  const { i18n } = useTranslation();
-  const isRTL = i18n.language === 'he';
+    <Navigation />
 
-  return (
-    <div className={`min-h-screen bg-white dark:bg-dark-900 transition-colors ${isRTL ? 'rtl' : 'ltr'}`} dir={isRTL ? 'rtl' : 'ltr'}>
-      <Navigation />
-      <main className="pt-16">
-        {children}
-      </main>
-      <Contact />
-      <Footer />
-    </div>
-  );
-};
+    <main id="main" className="pt-14">
+      {children}
+    </main>
+
+    <Contact />
+    <Footer />
+  </div>
+);
 
 export default Layout;
-

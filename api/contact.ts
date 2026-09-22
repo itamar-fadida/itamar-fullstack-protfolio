@@ -2,6 +2,14 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+/** Submitted values land in an HTML email body, so they must not carry markup. */
+const escapeHtml = (value: string) =>
+  String(value).replace(
+    /[&<>"']/g,
+    (char) =>
+      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char] as string,
+  );
+
 export default async function handler(req: any, res: any) {
   // Only allow POST requests
   if (req.method !== 'POST') {
@@ -22,6 +30,12 @@ export default async function handler(req: any, res: any) {
       return res.status(400).json({ error: 'Invalid email address' });
     }
 
+    const safe = {
+      name: escapeHtml(name),
+      email: escapeHtml(email),
+      message: escapeHtml(message),
+    };
+
     // Send email using Resend
     const data = await resend.emails.send({
       from: 'Portfolio Contact <onboarding@resend.dev>', // Update this with your verified domain
@@ -31,10 +45,10 @@ export default async function handler(req: any, res: any) {
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #2563eb;">New Contact Form Submission</h2>
           <div style="background-color: #f3f4f6; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <p style="margin: 10px 0;"><strong>Name:</strong> ${name}</p>
-            <p style="margin: 10px 0;"><strong>Email:</strong> ${email}</p>
+            <p style="margin: 10px 0;"><strong>Name:</strong> ${safe.name}</p>
+            <p style="margin: 10px 0;"><strong>Email:</strong> ${safe.email}</p>
             <p style="margin: 10px 0;"><strong>Message:</strong></p>
-            <p style="margin: 10px 0; white-space: pre-wrap;">${message}</p>
+            <p style="margin: 10px 0; white-space: pre-wrap;">${safe.message}</p>
           </div>
           <p style="color: #6b7280; font-size: 14px;">This message was sent from your portfolio contact form.</p>
         </div>

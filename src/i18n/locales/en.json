@@ -1,45 +1,68 @@
 {
-  "hero": {
-    "title": "Itamar Fadida",
-    "subtitle": "Full-Stack Engineer & AI Systems Developer",
-    "description": "Alumni of IDF Unit 81. Full-Stack Engineer and AI Systems Developer — shipping production products end-to-end: React interfaces, cloud and serverless backends, AI-driven automations, and DevOps infrastructure.",
-    "cta": {
-      "projects": "Projects",
-      "contact": "Contact",
-      "resume": "Resume"
-    }
-  },
   "nav": {
-    "home": "Home",
-    "projects": "Projects",
+    "experience": "Experience",
+    "work": "Work",
+    "caseStudy": "Case study",
+    "skills": "Skills",
     "resume": "Resume",
     "contact": "Contact"
   },
+  "hero": {
+    "cta": {
+      "resume": "Resume",
+      "email": "Email",
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "work": "Selected work"
+    }
+  },
+  "sections": {
+    "experience": "Experience",
+    "work": "Selected engineering work",
+    "caseStudy": "Engineering case study",
+    "skills": "Technical skills",
+    "education": "Education",
+    "contact": "Contact"
+  },
+  "labels": {
+    "stack": "Stack",
+    "impact": "Impact",
+    "focus": "Focus",
+    "learning": "Currently deepening",
+    "readCaseStudy": "Read the case study",
+    "visit": "Open site",
+    "production": "In production",
+    "internal": "Internal tool",
+    "prototype": "Prototype",
+    "analysisBadge": "Engineering analysis — not implemented",
+    "builtBadge": "Shipped",
+    "architecture": "Request path",
+    "moreWork": "Additional internal systems built in service are not publicly documented.",
+    "screenshot": "Screenshot",
+    "previous": "Previous screenshot",
+    "next": "Next screenshot",
+    "openFull": "Open full size"
+  },
   "contact": {
-    "title": "Get In Touch",
-    "description": "Interested in collaborating? I'd love to hear from you!",
-    "name": "Full Name",
+    "title": "Contact",
+    "name": "Name",
     "email": "Email",
     "message": "Message",
-    "send": "Send Message",
-    "sending": "Sending...",
-    "success": "Message sent successfully!",
-    "error": "Error sending message. Please try again."
+    "send": "Send message",
+    "sending": "Sending…",
+    "success": "Message sent.",
+    "error": "Could not send the message. Please try again."
   },
   "resume": {
     "title": "Resume",
     "download": "Download PDF",
-    "experience": "Professional Experience",
+    "print": "Print",
+    "summary": "Professional summary",
+    "experience": "Experience",
     "education": "Education",
-    "skills": "Skills"
-  },
-  "projects": {
-    "title": "My Projects",
-    "viewProject": "View Project",
-    "sourceCode": "Source Code"
+    "skills": "Technical skills"
   },
   "footer": {
     "rights": "All rights reserved"
   }
 }
-

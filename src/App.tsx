@@ -6,13 +6,19 @@ import Home from './pages/Home';
 import Resume from './pages/Resume';
 import './i18n/config';
 
-// Scroll to top component
-function ScrollToTop() {
-  const { pathname } = useLocation();
+const TITLES: Record<string, string> = {
+  '/': 'Itamar Fadida — Software Engineer, Backend & Infrastructure',
+  '/resume': 'Resume — Itamar Fadida, Software Engineer',
+};
+
+function RouteEffects() {
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    document.title = TITLES[pathname] ?? TITLES['/'];
+    // Do not fight an in-page anchor when one was requested.
+    if (!hash) window.scrollTo(0, 0);
+  }, [pathname, hash]);
 
   return null;
 }
@@ -21,11 +27,12 @@ function App() {
   return (
     <ThemeProvider>
       <Router>
-        <ScrollToTop />
+        <RouteEffects />
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/resume" element={<Resume />} />
+            <Route path="*" element={<Home />} />
           </Routes>
         </Layout>
       </Router>

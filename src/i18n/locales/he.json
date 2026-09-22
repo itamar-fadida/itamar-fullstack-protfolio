@@ -1,45 +1,68 @@
 {
-  "hero": {
-    "title": "איתמר פדידה",
-    "subtitle": "מהנדס Full-Stack ומפתח מערכות AI",
-    "description": "בוגר יחידה 81. מהנדס Full-Stack ומפתח מערכות AI — בונה מוצרים ב-production מקצה לקצה: ממשקי React, backends בענן ו-serverless, אוטומציות עם אינטגרציות AI, ותשתיות DevOps.",
-    "cta": {
-      "projects": "פרויקטים",
-      "contact": "יצירת קשר",
-      "resume": "קורות חיים"
-    }
-  },
   "nav": {
-    "home": "בית",
-    "projects": "פרויקטים",
+    "experience": "ניסיון",
+    "work": "עבודות",
+    "caseStudy": "Case study",
+    "skills": "מיומנויות",
     "resume": "קורות חיים",
     "contact": "יצירת קשר"
   },
+  "hero": {
+    "cta": {
+      "resume": "קורות חיים",
+      "email": "אימייל",
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "work": "עבודות נבחרות"
+    }
+  },
+  "sections": {
+    "experience": "ניסיון מקצועי",
+    "work": "עבודות הנדסיות נבחרות",
+    "caseStudy": "Case study הנדסי",
+    "skills": "מיומנויות טכניות",
+    "education": "השכלה",
+    "contact": "יצירת קשר"
+  },
+  "labels": {
+    "stack": "טכנולוגיות",
+    "impact": "תוצאה",
+    "focus": "התמחות",
+    "learning": "בלימוד מעמיק כרגע",
+    "readCaseStudy": "לקריאת ה-case study",
+    "visit": "מעבר לאתר",
+    "production": "ב-production",
+    "internal": "כלי פנימי",
+    "prototype": "פרוטוטייפ",
+    "analysisBadge": "ניתוח הנדסי — לא מומש",
+    "builtBadge": "מומש",
+    "architecture": "מסלול הבקשה",
+    "moreWork": "מערכות פנימיות נוספות שנבנו בשירות אינן מתועדות בפומבי.",
+    "screenshot": "צילום מסך",
+    "previous": "צילום קודם",
+    "next": "צילום הבא",
+    "openFull": "פתיחה בגודל מלא"
+  },
   "contact": {
     "title": "יצירת קשר",
-    "description": "מעוניינים לשתף פעולה? נשמח לשמוע ממך!",
-    "name": "שם מלא",
+    "name": "שם",
     "email": "אימייל",
     "message": "הודעה",
-    "send": "שלח הודעה",
-    "sending": "שולח...",
-    "success": "ההודעה נשלחה בהצלחה!",
-    "error": "שגיאה בשליחת ההודעה. אנא נסה שוב."
+    "send": "שליחת הודעה",
+    "sending": "שולח…",
+    "success": "ההודעה נשלחה.",
+    "error": "לא ניתן היה לשלוח את ההודעה. נסו שוב."
   },
   "resume": {
     "title": "קורות חיים",
-    "download": "הורד PDF",
+    "download": "הורדת PDF",
+    "print": "הדפסה",
+    "summary": "תקציר מקצועי",
     "experience": "ניסיון מקצועי",
     "education": "השכלה",
-    "skills": "מיומנויות"
-  },
-  "projects": {
-    "title": "הפרויקטים שלי",
-    "viewProject": "צפה בפרויקט",
-    "sourceCode": "קוד מקור"
+    "skills": "מיומנויות טכניות"
   },
   "footer": {
     "rights": "כל הזכויות שמורות"
   }
 }
-

@@ -1,247 +1,88 @@
-import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FolderKanban, Mail, FileText, ChevronDown } from 'lucide-react';
+import { ArrowDown, FileText, Github, Linkedin, Mail } from 'lucide-react';
+import { identity, links } from '../data/profile';
+import { useLang } from '../hooks/useLang';
 
 const Hero = () => {
-  const { t } = useTranslation();
+  const { t, pick } = useLang();
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.12,
-        delayChildren: 0.1,
-      },
-    },
-  };
+  const ctas = [
+    { key: 'resume', to: '/resume', icon: FileText, primary: true },
+    { key: 'email', href: `mailto:${links.email}`, icon: Mail },
+    links.github ? { key: 'github', href: links.github, icon: Github, external: true } : null,
+    links.linkedin ? { key: 'linkedin', href: links.linkedin, icon: Linkedin, external: true } : null,
+  ].filter(Boolean) as Array<{
+    key: string;
+    to?: string;
+    href?: string;
+    icon: typeof Mail;
+    primary?: boolean;
+    external?: boolean;
+  }>;
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.6, -0.05, 0.01, 0.99],
-      },
-    },
-  };
+  const primary = 'btn-primary';
+  const secondary = 'btn-secondary';
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
-      {/* Animated Background with brand gradient */}
-      <motion.div 
-        animate={{
-          backgroundPosition: ['0% 0%', '100% 100%', '0% 0%'],
-        }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          ease: 'linear',
-        }}
-        className="absolute inset-0 bg-gradient-to-br from-white via-brand-50 to-brand-100 dark:from-dark-900 dark:via-dark-800 dark:to-brand-900/20"
-        style={{ backgroundSize: '200% 200%' }}
+    <header className="mx-auto w-full max-w-page px-5 pb-16 pt-20 sm:px-8 sm:pb-20 sm:pt-28">
+      {/* Location is metadata, not a section label — kept neutral so the blue
+          stays reserved for section headings and the primary action. */}
+      <p className="mb-5 font-mono text-2xs uppercase tracking-[0.18em] text-faint">
+        {pick(identity.location)}
+      </p>
+
+      <h1 className="text-4xl font-semibold leading-[1.05] sm:text-5xl lg:text-6xl">
+        {pick(identity.name)}
+      </h1>
+
+      <p className="mt-3 text-xl font-medium text-ink sm:text-2xl">{pick(identity.title)}</p>
+
+      {/* The five facts a screener should absorb before reading a sentence. */}
+      <ul className="mt-5 flex flex-wrap items-center gap-x-2 gap-y-2 font-mono text-xs text-muted">
+        {identity.signals.map((signal, i) => (
+          <li key={signal} className="flex items-center gap-2">
+            {i > 0 && <span aria-hidden className="text-line">·</span>}
+            <span className={i === 0 ? 'font-medium text-accent' : undefined}>{signal}</span>
+          </li>
+        ))}
+      </ul>
+
+      <p className="prose-body mt-7 max-w-content text-base">{pick(identity.intro)}</p>
+
+      <nav aria-label="Primary links" className="mt-9 flex flex-wrap gap-3">
+        {ctas.map(({ key, to, href, icon: Icon, primary: isPrimary, external }) => {
+          const className = isPrimary ? primary : secondary;
+          const content = (
+            <>
+              <Icon className="h-4 w-4" aria-hidden />
+              {t(`hero.cta.${key}`)}
+            </>
+          );
+          return to ? (
+            <Link key={key} to={to} className={className}>
+              {content}
+            </Link>
+          ) : (
+            <a
+              key={key}
+              href={href}
+              className={className}
+              {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+            >
+              {content}
+            </a>
+          );
+        })}
+      </nav>
+
+      <a
+        href="#experience"
+        className="mt-12 inline-flex items-center gap-2 font-mono text-2xs uppercase tracking-[0.18em] text-faint hover:text-accent"
       >
-        <div className="absolute inset-0 bg-grid-pattern"></div>
-      </motion.div>
-
-      {/* Floating Elements with brand colors */}
-      <motion.div
-        animate={{
-          y: [0, -30, 0],
-          x: [0, 20, 0],
-          rotate: [0, 10, 0],
-          scale: [1, 1.2, 1],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-        className="absolute top-20 left-10 w-32 h-32 bg-brand-400/20 dark:bg-brand-500/30 rounded-full blur-3xl"
-      />
-      <motion.div
-        animate={{
-          y: [0, 30, 0],
-          x: [0, -25, 0],
-          rotate: [0, -10, 0],
-          scale: [1, 1.3, 1],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-        className="absolute bottom-20 right-10 w-48 h-48 bg-brand-500/20 dark:bg-brand-400/30 rounded-full blur-3xl"
-      />
-      <motion.div
-        animate={{
-          y: [0, -20, 0],
-          x: [0, -15, 0],
-          rotate: [0, 20, 0],
-          scale: [1, 1.15, 1],
-        }}
-        transition={{
-          duration: 7,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-        className="absolute top-1/3 right-1/4 w-24 h-24 bg-brand-300/15 dark:bg-brand-600/25 rounded-full blur-2xl"
-      />
-      <motion.div
-        animate={{
-          y: [0, 25, 0],
-          x: [0, 20, 0],
-          rotate: [0, -15, 0],
-        }}
-        transition={{
-          duration: 9,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-        className="absolute bottom-1/3 left-1/4 w-36 h-36 bg-brand-200/20 dark:bg-brand-700/30 rounded-full blur-2xl"
-      />
-
-      {/* Content */}
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className="relative z-10 max-w-4xl mx-auto text-center"
-      >
-        {/* Profile Image with enhanced animations */}
-        <motion.div
-          variants={itemVariants}
-          className="mb-8 flex justify-center"
-        >
-          <motion.div
-            whileHover={{ scale: 1.15, rotate: 8 }}
-            whileTap={{ scale: 0.95 }}
-            className="relative w-36 h-36 cursor-pointer"
-          >
-            <motion.div 
-              animate={{
-                rotate: [0, 360],
-              }}
-              transition={{
-                duration: 20,
-                repeat: Infinity,
-                ease: 'linear',
-              }}
-              className="absolute inset-0 rounded-full bg-gradient-to-r from-brand-400 via-brand-500 to-brand-400 opacity-75 blur-md"
-            />
-            <div className="relative w-full h-full rounded-full gradient-brand p-1 shadow-2xl">
-              <div className="w-full h-full rounded-full bg-white dark:bg-dark-800 flex items-center justify-center overflow-hidden">
-                <img 
-                  src="/favicon.png" 
-                  alt="Itamar Fadida" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
-
-        {/* Title with animated gradient */}
-        <motion.h1
-          variants={itemVariants}
-          className="text-5xl sm:text-6xl lg:text-7xl font-bold font-display mb-4"
-        >
-          <motion.span 
-            animate={{
-              backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-            }}
-            transition={{
-              duration: 5,
-              repeat: Infinity,
-              ease: 'linear',
-            }}
-            style={{ backgroundSize: '200% auto' }}
-            className="bg-gradient-to-r from-brand-400 via-brand-500 to-brand-400 bg-clip-text text-transparent"
-          >
-            {t('hero.title')}
-          </motion.span>
-        </motion.h1>
-
-        {/* Subtitle */}
-        <motion.h2
-          variants={itemVariants}
-          className="text-2xl sm:text-3xl lg:text-4xl font-semibold font-display text-dark-700 dark:text-dark-200 mb-6"
-        >
-          {t('hero.subtitle')}
-        </motion.h2>
-
-        {/* Description */}
-        <motion.p
-          variants={itemVariants}
-          className="text-lg sm:text-xl text-dark-600 dark:text-dark-300 mb-12 max-w-3xl mx-auto leading-relaxed"
-        >
-          {t('hero.description')}
-        </motion.p>
-
-        {/* CTA Buttons — unified primary style */}
-        <motion.div
-          variants={itemVariants}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-        >
-          <a
-            href="#projects"
-            className="inline-flex items-center gap-2 px-8 py-4 gradient-brand text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto text-center justify-center hover:-translate-y-1 active:scale-[0.98]"
-          >
-            <FolderKanban className="w-5 h-5" />
-            {t('hero.cta.projects')}
-          </a>
-
-          <Link
-            to="/resume"
-            className="inline-flex items-center gap-2 px-8 py-4 gradient-brand text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto text-center justify-center hover:-translate-y-1 active:scale-[0.98]"
-          >
-            <FileText className="w-5 h-5" />
-            {t('hero.cta.resume')}
-          </Link>
-
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 px-8 py-4 gradient-brand text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto text-center justify-center hover:-translate-y-1 active:scale-[0.98]"
-          >
-            <Mail className="w-5 h-5" />
-            {t('hero.cta.contact')}
-          </a>
-        </motion.div>
-
-        {/* Scroll Indicator — jumps to projects section */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2 }}
-          className="mt-16"
-        >
-          <motion.button
-            type="button"
-            aria-label="Scroll to projects"
-            onClick={() => {
-              document.getElementById('projects')?.scrollIntoView({
-                behavior: 'smooth',
-                block: 'center',
-              });
-            }}
-            animate={{ y: [0, 15, 0] }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-            className="inline-block cursor-pointer bg-transparent border-0 p-0"
-          >
-            <div className="p-2 rounded-full bg-brand-100 dark:bg-brand-900/30 hover:scale-110 transition-transform">
-              <ChevronDown className="w-6 h-6 text-brand-500 dark:text-brand-400" />
-            </div>
-          </motion.button>
-        </motion.div>
-      </motion.div>
-    </section>
+        <ArrowDown className="h-3.5 w-3.5" aria-hidden />
+        {t('sections.experience')}
+      </a>
+    </header>
   );
 };
 

@@ -1,28 +1,19 @@
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
 
 const LanguageSwitch = () => {
   const { i18n } = useTranslation();
-  
-  const toggleLanguage = () => {
-    const newLang = i18n.language === 'he' ? 'en' : 'he';
-    i18n.changeLanguage(newLang);
-    document.documentElement.dir = newLang === 'he' ? 'rtl' : 'ltr';
-  };
+  const next = i18n.language === 'he' ? 'en' : 'he';
 
   return (
-    <motion.button
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      onClick={toggleLanguage}
-      className="flex items-center space-x-2 rtl:space-x-reverse px-3 py-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-      aria-label="Switch language"
+    <button
+      type="button"
+      onClick={() => i18n.changeLanguage(next)}
+      className="rounded-md border border-line px-2 py-1 font-mono text-2xs uppercase tracking-wider text-muted transition-colors hover:text-ink"
+      aria-label={next === 'he' ? 'Switch to Hebrew' : 'Switch to English'}
     >
-      <span className="text-lg">{i18n.language === 'he' ? '🇺🇸' : '🇮🇱'}</span>
-      <span className="text-sm font-medium">{i18n.language === 'he' ? 'EN' : 'עב'}</span>
-    </motion.button>
+      {next === 'he' ? 'עב' : 'EN'}
+    </button>
   );
 };
 
 export default LanguageSwitch;
-

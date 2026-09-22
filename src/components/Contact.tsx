@@ -1,70 +1,51 @@
 import { useState, FormEvent, ChangeEvent } from 'react';
-import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
-import { Mail, Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
+import { AlertCircle, ArrowUpRight, CheckCircle, Github, Linkedin, Loader2, Mail } from 'lucide-react';
+import { links } from '../data/profile';
+import { useLang } from '../hooks/useLang';
 
 interface FormData {
   name: string;
   email: string;
   message: string;
 }
-
-interface FormErrors {
-  name?: string;
-  email?: string;
-  message?: string;
-}
+type FormErrors = Partial<Record<keyof FormData, string>>;
 
 const Contact = () => {
-  const { t, i18n } = useTranslation();
-  const isHebrew = i18n.language === 'he';
+  const { t, isHebrew } = useLang();
 
-  const [formData, setFormData] = useState<FormData>({
-    name: '',
-    email: '',
-    message: '',
-  });
-
+  const [formData, setFormData] = useState<FormData>({ name: '', email: '', message: '' });
   const [errors, setErrors] = useState<FormErrors>({});
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const validateForm = (): boolean => {
-    const newErrors: FormErrors = {};
+  const validate = (): boolean => {
+    const next: FormErrors = {};
 
-    // Name validation
     if (!formData.name.trim()) {
-      newErrors.name = isHebrew ? 'שם מלא הוא שדה חובה' : 'Full name is required';
+      next.name = isHebrew ? 'שדה חובה' : 'Required';
     } else if (formData.name.trim().length < 2) {
-      newErrors.name = isHebrew ? 'שם חייב להכיל לפחות 2 תווים' : 'Name must be at least 2 characters';
+      next.name = isHebrew ? 'לפחות 2 תווים' : 'At least 2 characters';
     }
 
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!formData.email.trim()) {
-      newErrors.email = isHebrew ? 'אימייל הוא שדה חובה' : 'Email is required';
-    } else if (!emailRegex.test(formData.email)) {
-      newErrors.email = isHebrew ? 'כתובת אימייל לא תקינה' : 'Invalid email address';
+      next.email = isHebrew ? 'שדה חובה' : 'Required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      next.email = isHebrew ? 'כתובת לא תקינה' : 'Invalid email address';
     }
 
-    // Message validation
     if (!formData.message.trim()) {
-      newErrors.message = isHebrew ? 'הודעה היא שדה חובה' : 'Message is required';
+      next.message = isHebrew ? 'שדה חובה' : 'Required';
     } else if (formData.message.trim().length < 10) {
-      newErrors.message = isHebrew ? 'הודעה חייבת להכיל לפחות 10 תווים' : 'Message must be at least 10 characters';
+      next.message = isHebrew ? 'לפחות 10 תווים' : 'At least 10 characters';
     }
 
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    setErrors(next);
+    return Object.keys(next).length === 0;
   };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    
-    // Validate form
-    if (!validateForm()) {
-      return;
-    }
+    if (!validate()) return;
 
     setStatus('sending');
     setErrorMessage('');
@@ -72,39 +53,23 @@ const Contact = () => {
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
-
-      const data = await response.json();
+      const data = await response.json().catch(() => ({}));
 
       if (response.ok) {
         setStatus('success');
         setFormData({ name: '', email: '', message: '' });
         setErrors({});
-        
-        // Reset success message after 5 seconds
-        setTimeout(() => {
-          setStatus('idle');
-        }, 5000);
       } else {
         setStatus('error');
-        setErrorMessage(data.error || (isHebrew ? 'שגיאה בשליחת ההודעה' : 'Failed to send message'));
-        
-        // Reset error after 5 seconds
-        setTimeout(() => {
-          setStatus('idle');
-          setErrorMessage('');
-        }, 5000);
+        setErrorMessage(data.error || t('contact.error'));
       }
-    } catch (error) {
-      console.error('Error submitting form:', error);
+    } catch {
       setStatus('error');
-      setErrorMessage(isHebrew ? 'שגיאה בחיבור לשרת' : 'Failed to connect to server');
-      
-      // Reset error after 5 seconds
+      setErrorMessage(t('contact.error'));
+    } finally {
       setTimeout(() => {
         setStatus('idle');
         setErrorMessage('');
@@ -114,181 +79,135 @@ const Contact = () => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-    
-    // Clear error for this field when user starts typing
+    setFormData((prev) => ({ ...prev, [name]: value }));
     if (errors[name as keyof FormErrors]) {
-      setErrors((prev) => ({
-        ...prev,
-        [name]: undefined,
-      }));
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
   };
 
+  const field =
+    'w-full rounded-md border border-line bg-page px-3 py-2.5 text-sm text-ink placeholder:text-faint focus:border-accent disabled:opacity-60';
+  const fieldError = 'border-red-500 focus:border-red-500';
+
+  const directLinks = [
+    { key: 'email', label: links.email, href: `mailto:${links.email}`, icon: Mail },
+    links.github ? { key: 'github', label: 'GitHub', href: links.github, icon: Github } : null,
+    links.linkedin
+      ? { key: 'linkedin', label: 'LinkedIn', href: links.linkedin, icon: Linkedin }
+      : null,
+  ].filter(Boolean) as Array<{ key: string; label: string; href: string; icon: typeof Mail }>;
+
   return (
-    <section id="contact" className="py-20 bg-gradient-to-br from-dark-50 to-dark-100 dark:from-dark-900 dark:to-dark-800">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-4xl sm:text-5xl font-bold font-display text-dark-800 dark:text-white mb-4">
-            {t('contact.title')}
-          </h2>
-          <p className="text-lg text-dark-600 dark:text-dark-400">
-            {t('contact.description')}
-          </p>
-        </motion.div>
+    <section id="contact" className="scroll-mt-20 border-t border-line py-14 sm:py-20">
+      <div className="mx-auto w-full max-w-page px-5 sm:px-8">
+        <h2 className="eyebrow mb-8">{t('sections.contact')}</h2>
 
-        <motion.form
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          onSubmit={handleSubmit}
-          className="bg-white dark:bg-dark-800 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300 p-8"
-        >
-          <div className="space-y-6">
-            {/* Name */}
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-dark-700 dark:text-dark-300 mb-2">
-                {t('contact.name')}
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                disabled={status === 'sending'}
-                className={`w-full px-4 py-3 rounded-lg border-2 outline-none transition-all duration-200 ${
-                  errors.name
-                    ? 'border-red-500 focus:ring-2 focus:ring-red-500/20 focus:border-red-500'
-                    : 'border-dark-200 dark:border-dark-600 focus:ring-2 focus:ring-brand-500/20 dark:focus:ring-brand-400/20 focus:border-brand-500 dark:focus:border-brand-400'
-                } bg-white dark:bg-dark-900 text-dark-800 dark:text-white disabled:opacity-50 disabled:cursor-not-allowed`}
-              />
-              {errors.name && (
-                <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.name}</p>
-              )}
+        <div className="grid gap-10 md:grid-cols-[minmax(0,20rem)_1fr] md:gap-16">
+          <div>
+            <ul className="space-y-3">
+              {directLinks.map(({ key, label, href, icon: Icon }) => (
+                <li key={key}>
+                  <a
+                    href={href}
+                    {...(href.startsWith('http')
+                      ? { target: '_blank', rel: 'noopener noreferrer' }
+                      : {})}
+                    className="inline-flex items-center gap-2 text-sm text-ink hover:text-accent"
+                  >
+                    <Icon className="h-4 w-4 text-faint" aria-hidden />
+                    <span className="break-all">{label}</span>
+                    <ArrowUpRight className="h-3.5 w-3.5 text-faint" aria-hidden />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <form onSubmit={handleSubmit} noValidate className="max-w-xl space-y-4">
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div>
+                <label htmlFor="name" className="mb-1.5 block text-xs font-medium text-muted">
+                  {t('contact.name')}
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  disabled={status === 'sending'}
+                  aria-invalid={!!errors.name}
+                  className={`${field} ${errors.name ? fieldError : ''}`}
+                />
+                {errors.name && <p className="mt-1 text-xs text-red-600">{errors.name}</p>}
+              </div>
+
+              <div>
+                <label htmlFor="email" className="mb-1.5 block text-xs font-medium text-muted">
+                  {t('contact.email')}
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  disabled={status === 'sending'}
+                  aria-invalid={!!errors.email}
+                  className={`${field} ${errors.email ? fieldError : ''}`}
+                />
+                {errors.email && <p className="mt-1 text-xs text-red-600">{errors.email}</p>}
+              </div>
             </div>
 
-            {/* Email */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-dark-700 dark:text-dark-300 mb-2">
-                {t('contact.email')}
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                disabled={status === 'sending'}
-                className={`w-full px-4 py-3 rounded-lg border-2 outline-none transition-all duration-200 ${
-                  errors.email
-                    ? 'border-red-500 focus:ring-2 focus:ring-red-500/20 focus:border-red-500'
-                    : 'border-dark-200 dark:border-dark-600 focus:ring-2 focus:ring-brand-500/20 dark:focus:ring-brand-400/20 focus:border-brand-500 dark:focus:border-brand-400'
-                } bg-white dark:bg-dark-900 text-dark-800 dark:text-white disabled:opacity-50 disabled:cursor-not-allowed`}
-              />
-              {errors.email && (
-                <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.email}</p>
-              )}
-            </div>
-
-            {/* Message */}
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-dark-700 dark:text-dark-300 mb-2">
+              <label htmlFor="message" className="mb-1.5 block text-xs font-medium text-muted">
                 {t('contact.message')}
               </label>
               <textarea
                 id="message"
                 name="message"
+                rows={5}
                 value={formData.message}
                 onChange={handleChange}
                 disabled={status === 'sending'}
-                rows={5}
-                className={`w-full px-4 py-3 rounded-lg border-2 outline-none transition-all duration-200 resize-none ${
-                  errors.message
-                    ? 'border-red-500 focus:ring-2 focus:ring-red-500/20 focus:border-red-500'
-                    : 'border-dark-200 dark:border-dark-600 focus:ring-2 focus:ring-brand-500/20 dark:focus:ring-brand-400/20 focus:border-brand-500 dark:focus:border-brand-400'
-                } bg-white dark:bg-dark-900 text-dark-800 dark:text-white disabled:opacity-50 disabled:cursor-not-allowed`}
+                aria-invalid={!!errors.message}
+                className={`${field} resize-y ${errors.message ? fieldError : ''}`}
               />
-              {errors.message && (
-                <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.message}</p>
-              )}
+              {errors.message && <p className="mt-1 text-xs text-red-600">{errors.message}</p>}
             </div>
 
-            {/* Submit Button */}
             <button
               type="submit"
               disabled={status === 'sending'}
-              className="w-full px-6 py-4 gradient-brand text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 hover:-translate-y-0.5 active:scale-[0.98]"
+              className="btn-primary disabled:opacity-60"
             >
               {status === 'sending' ? (
                 <>
-                  <Loader2 className="w-5 h-5 animate-spin" />
+                  <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
                   {t('contact.sending')}
                 </>
               ) : (
-                <>
-                  <Send className="w-5 h-5" />
-                  {t('contact.send')}
-                </>
+                t('contact.send')
               )}
             </button>
 
-            {/* Status Messages */}
-            {status === 'success' && (
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="p-4 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 rounded-lg text-center flex items-center justify-center gap-2"
-              >
-                <CheckCircle className="w-5 h-5" />
-                {t('contact.success')}
-              </motion.div>
-            )}
-
-            {status === 'error' && (
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="p-4 bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300 rounded-lg text-center flex items-center justify-center gap-2"
-              >
-                <AlertCircle className="w-5 h-5" />
-                {errorMessage || t('contact.error')}
-              </motion.div>
-            )}
-          </div>
-        </motion.form>
-
-        {/* Contact Info */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-12 flex justify-center"
-        >
-          <button
-            onClick={() => {
-              window.open(
-                `https://mail.google.com/mail/?view=cm&to=itamar.fullstack@gmail.com&su=${encodeURIComponent(isHebrew ? 'יצירת קשר' : 'Contact Request')}`,
-                "_blank"
-              );
-            }}
-            className="group bg-white dark:bg-dark-800 text-dark-700 dark:text-dark-300 px-8 py-4 rounded-full transition-all duration-300 border-2 border-dark-200 dark:border-dark-600 hover:border-red-400 dark:hover:border-red-400 hover:text-red-500 dark:hover:text-red-400 flex items-center gap-3 shadow-lg hover:shadow-xl hover:-translate-y-1 active:scale-[0.98]"
-          >
-            <Mail className="w-5 h-5 transition-transform duration-300 group-hover:scale-110" />
-            <span className="font-semibold text-sm">itamar.fullstack@gmail.com</span>
-          </button>
-        </motion.div>
+            <p aria-live="polite" className="min-h-[1.25rem] text-sm">
+              {status === 'success' && (
+                <span className="inline-flex items-center gap-2 text-emerald-600 dark:text-emerald-400">
+                  <CheckCircle className="h-4 w-4" aria-hidden />
+                  {t('contact.success')}
+                </span>
+              )}
+              {status === 'error' && (
+                <span className="inline-flex items-center gap-2 text-red-600">
+                  <AlertCircle className="h-4 w-4" aria-hidden />
+                  {errorMessage || t('contact.error')}
+                </span>
+              )}
+            </p>
+          </form>
+        </div>
       </div>
     </section>
   );
