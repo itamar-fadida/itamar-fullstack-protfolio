@@ -11,6 +11,7 @@ const Layout = ({ children }: { children: ReactNode }) => (
     >
       Skip to content
     </a>
+    
 
     <Navigation />
 
